@@ -1,16 +1,21 @@
-import express from 'express';
-import morgan from 'morgan';
-import indexRoute from '@routes/index.route';
+import 'reflect-metadata';
+import app from './app';
+import { appDataSource } from './db';
 
-const app = express();
-app.use(morgan('dev'));
+require('dotenv').config();
+const PORT = process.env.PORT || 3001;
 
-app.use('/', indexRoute);
+async function main() {
+  try {
+    await appDataSource.initialize();
+    console.log('Database connected!');
+    app.listen(PORT, () => {
+      console.log('Server running OK!!');
+    });
+    console.log('Server is listening on port:', PORT);
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-app.get('/', (_req, res) => {
-  res.json({ message: 'hello world' });
-});
-
-app.listen(4000, () => {
-  console.log('Server running OK!!');
-});
+main();
