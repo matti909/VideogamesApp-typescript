@@ -3,7 +3,7 @@
   "description": "My React and TypeScript app",
   "version": "0.0.1",
   "scripts": {
-    "start": "webpack serve --config webpack.dev.config.ts"
+    "start": "webpack serve  --hot --config webpack.dev.config.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
@@ -23,6 +23,8 @@
     "eslint-plugin-react": "^7.32.2",
     "html-webpack-plugin": "^5.5.1",
     "prettier": "^2.8.7",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
     "webpack": "^5.80.0",
@@ -30,8 +32,15 @@
     "webpack-dev-server": "^4.13.3"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/node": "16",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
+    "url-loader": "^4.1.1"
   },
   "eslintConfig": {
     "extends": [

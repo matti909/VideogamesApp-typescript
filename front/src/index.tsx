@@ -1,12 +1,20 @@
-import React, { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import React, { Fragment } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './app';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { AppStateProvider } from './context/AppStateContext';
+import store, { persistor } from './redux/store';
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
-function App() {
-  return <h1>My React and TypeScript App!</h1>;
-}
+const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+  <Fragment>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <AppStateProvider>
+          <App />
+        </AppStateProvider>
+      </PersistGate>
+    </Provider>
+  </Fragment>,
 );

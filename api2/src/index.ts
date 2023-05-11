@@ -3,19 +3,23 @@ import app from './app';
 import { appDataSource } from './db';
 
 require('dotenv').config();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4002;
 
-async function main() {
+async function boostrap() {
   try {
     await appDataSource.initialize();
     console.log('Database connected!');
     app.listen(PORT, () => {
       console.log('Server running OK!!');
     });
+
     console.log('Server is listening on port:', PORT);
   } catch (err) {
     console.log(err);
   }
 }
 
-main();
+boostrap();
+function db() {
+  throw new Error('Function not implemented.');
+}

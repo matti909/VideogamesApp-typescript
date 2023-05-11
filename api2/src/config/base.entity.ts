@@ -6,7 +6,7 @@ import {
 
 export abstract class BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: number;
 
   @CreateDateColumn({
     type: 'timestamp',

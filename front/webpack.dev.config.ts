@@ -2,6 +2,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration as WebpackConfig, HotModuleReplacementPlugin } from 'webpack';
 import { Configuration as WebpackDevServerConfig } from 'webpack-dev-server';
+const buildDirectory = 'dist';
 
 type Configuration = WebpackConfig & {
   devServer?: WebpackDevServerConfig;
@@ -10,6 +11,8 @@ type Configuration = WebpackConfig & {
 const config: Configuration = {
   mode: 'development',
   output: {
+    path: path.join(__dirname, buildDirectory),
+    filename: 'bundle.js',
     publicPath: '/',
   },
   entry: './src/index.tsx',
@@ -26,8 +29,13 @@ const config: Configuration = {
         },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(sa|sc|c)ss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader',
+        options: { limit: false },
       },
     ],
   },
@@ -44,7 +52,7 @@ const config: Configuration = {
   devServer: {
     static: path.join(__dirname, 'dist'),
     historyApiFallback: true,
-    port: 4000,
+    port: 3000,
     open: true,
     hot: true,
   },
