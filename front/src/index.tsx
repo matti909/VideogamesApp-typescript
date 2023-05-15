@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './app';
+import './styles/index.scss';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { AppStateProvider } from './context/AppStateContext';

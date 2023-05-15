@@ -1,4 +1,4 @@
-import * as route from '@constrollers/games';
+import * as route from '@constrollers/games.controller';
 import { Router } from 'express';
 
 const router = Router();

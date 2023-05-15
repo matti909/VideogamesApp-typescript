@@ -7,7 +7,7 @@ import axios from 'axios';
 interface Game {
   id: number;
   name: string;
-  image: string;
+  background_image?: string;
   rating?: number;
 }
 
@@ -26,7 +26,7 @@ const getVideogames = async (): Promise<Game[]> => {
     return {
       id: game.id,
       name: game.name,
-      image: game.image,
+      image: game.background_image,
       rating: game.rating ? parseFloat(game.rating.toFixed(2)) : undefined
     };
   });
