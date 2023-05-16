@@ -11,12 +11,25 @@
     "esModuleInterop": true,
     "jsx": "react",
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "strict": true,
+    "declaration": true,
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "outDir": "./dist",
+    "typeRoots": [
+      "./src/@types",
+      "./node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ]
   },
   "include": [
-    "src",
-    "**/*.ts",
-    "**/*.tsx"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.scss"
   ],
   "exclude": [
     "node_modules",

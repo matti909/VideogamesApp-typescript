@@ -2,6 +2,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration as WebpackConfig, HotModuleReplacementPlugin } from 'webpack';
 import { Configuration as WebpackDevServerConfig } from 'webpack-dev-server';
+
 const buildDirectory = 'dist';
 
 type Configuration = WebpackConfig & {
@@ -12,7 +13,7 @@ const config: Configuration = {
   mode: 'development',
   output: {
     path: path.join(__dirname, buildDirectory),
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js', 
     publicPath: '/',
   },
   entry: './src/index.tsx',
@@ -34,13 +35,18 @@ const config: Configuration = {
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader',
-        options: { limit: false },
+        type: 'asset/resource',
       },
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+  },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -53,8 +59,22 @@ const config: Configuration = {
     static: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     port: 3000,
-    open: true,
     hot: true,
+  },
+  infrastructureLogging: {
+    level: 'error',
+  },
+  watchOptions: {
+    ignored: /node_modules/,
+  },
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
+  performance: {
+    hints: process.env.NODE_ENV === 'production' ? 'warning' : false,
   },
 };
 
