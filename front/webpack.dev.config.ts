@@ -13,7 +13,7 @@ const config: Configuration = {
   mode: 'development',
   output: {
     path: path.join(__dirname, buildDirectory),
-    filename: '[name].[contenthash].js', 
+    filename: '[name].[contenthash].js',
     publicPath: '/',
   },
   entry: './src/index.tsx',
