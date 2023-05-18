@@ -109,4 +109,6 @@ dist
 # package-lock.json
 package-lock.json
 
+config/
+
 README.md
