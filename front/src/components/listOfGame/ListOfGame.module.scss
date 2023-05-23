@@ -1,0 +1,11 @@
+.listOfGame {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4px;
+  padding-top: 100px;
+  grid-auto-rows: minmax(100px, auto);
+
+  li {
+    list-style-type: none;
+  }
+}

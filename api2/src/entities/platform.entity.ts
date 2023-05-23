@@ -5,9 +5,10 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { GamesEntity } from './games.entity';
+
 import { IPlatform } from 'src/interfaces/game.interface';
 import { BaseEntity } from 'src/config/base.entity';
+import { GamesEntity } from './games.entity';
 
 @Entity({ name: 'platforms' })
 export class PlatformEntity extends BaseEntity implements IPlatform {
@@ -16,6 +17,9 @@ export class PlatformEntity extends BaseEntity implements IPlatform {
 
   @Column()
   name: string;
+
+  @Column()
+  games_count: number;
 
   @Column()
   slug: string;

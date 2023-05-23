@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getVideogames, insertGame } from 'src/services/game.service';
+import { getVideogames } from 'src/services/game.service';
 import { handleHttp } from 'src/utils/error.handle';
 
 const getGame = async (req: Request, res: Response) => {
@@ -12,7 +12,6 @@ const getGame = async (req: Request, res: Response) => {
 const getGames = async (req: Request, res: Response) => {
   try {
     const response = await getVideogames();
-    console.log('aqui');
     res.send(response);
   } catch (err) {
     handleHttp(res, 'Aqui un error');
@@ -28,8 +27,7 @@ const updateGame = async (req: Request, res: Response) => {
 
 const postGame = async (req: Request, res: Response) => {
   try {
-    const resq = await insertGame(req.body);
-    res.send(resq);
+    res.send(console.log('hello world'));
   } catch (err) {
     handleHttp(res, 'Aqui un error', err);
   }

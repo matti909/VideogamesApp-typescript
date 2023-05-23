@@ -1,7 +1,6 @@
 import 'dotenv/config';
 const { DOGS_API_KEY } = process.env;
 import type { IGame, IGenre, IPlatform } from 'src/interfaces/game.interface';
-import GameModel from 'src/models/game.model';
 import axios from 'axios';
 
 const getVideogames = async (): Promise<IGame[]> => {
@@ -31,11 +30,12 @@ const getVideogames = async (): Promise<IGame[]> => {
 
   return resultado;
 };
-
+/*
 const insertGame = async (game: IGame) => {
-  const responseInsert = new GameModel(game);
-  const res = await responseInsert.save();
+  const gameRepository = getManager().getRepository(game);
+  const newGame = gameRepository.create(game);
+  const res = await gameRepository.save(newGame);
   return res;
 };
-
-export { insertGame, getVideogames };
+*/
+export { getVideogames };
