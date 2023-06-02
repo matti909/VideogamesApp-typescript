@@ -7,10 +7,10 @@ import { PlatformEntity } from './entities/platform.entity';
 export const appDataSource = new DataSource({
   type: 'postgres',
   host: 'localhost',
-  port: 5432,
+  port: 4000,
   username: 'matti',
-  password: 'secret1234',
-  database: 'videogames3',
+  password: 'secret34898525',
+  database: 'videogames',
   entities: [GamesEntity, GenreEntity, PlatformEntity],
   logging: true,
   synchronize: true

@@ -1,0 +1,19 @@
+.containerfilter {
+  display: flex;
+  top: 220px;
+}
+
+.iconfilter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.iconfilter .icon {
+  width: 30px;
+  height: 30px;
+  stroke: #555;
+}

@@ -1,16 +1,16 @@
-import * as route from '@constrollers/games.controller';
+import {
+  getGame,
+  getGames,
+  postGame,
+  updateGame,
+  deleteGame
+} from '@constrollers/games.controller';
 import { Router } from 'express';
 
 const router = Router();
 
-router.get('/', route.getGames);
+router.route('/').get(getGames).post(postGame);
 
-router.get('/:id', route.getGame);
-
-router.post('/', route.postGame);
-
-router.put('/:id', route.updateGame);
-
-router.delete('/:id', route.deleteGame);
+router.route('/:id').get(getGame).put(updateGame).delete(deleteGame);
 
 export { router };

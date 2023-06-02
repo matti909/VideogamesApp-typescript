@@ -2,6 +2,7 @@ export interface IGame {
   id: number;
   slug: string;
   name: string;
+  description?: string;
   released: string;
   background_image: string;
   rating: number;
@@ -35,4 +36,15 @@ export interface IPlatform {
   image?: any;
   games_count: number;
   image_background: string;
+}
+
+interface RootObject {
+  id: number;
+  name: string;
+  slug: string;
+  background_image: string;
+  released: string;
+  rating: number;
+  platforms: string[];
+  genres: string[];
 }

@@ -6,7 +6,6 @@ import cookieParser from 'cookie-parser';
 import compress from 'compression';
 import helmet from 'helmet';
 import { router } from './routes';
-import db from './config/mongo';
 
 require('dotenv').config();
 
@@ -21,7 +20,5 @@ app.use(helmet());
 app.use(cors());
 
 app.use(router);
-
-db().then(() => console.log('mongo ready'));
 
 export default app;

@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../components/header/Header';
-import { IGame } from 'interfaces/videogames.interface';
-import { videogames } from '../service/fetchGames';
+import style from './Home.module.scss';
 import { ListOfGame } from '../components/listOfGame/ListOfGame';
+import { useAppState } from '../context/AppStateContext';
+import FilterBar from '../components/filterBar/FilterBar';
 
 type Props = {};
 
 const Home = (props: Props) => {
-  const [allVideogames, setAllVideogames] = useState<IGame[] | null>(null);
-
-  useEffect(() => {
-    videogames
-      .getAll()
-      .then((r) => {
-        setAllVideogames(r.data);
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  }, []);
+  const { state } = useAppState();
+  const { allVideogames } = state;
 
   return (
     <>
@@ -29,6 +20,7 @@ const Home = (props: Props) => {
         <div>
           <ListOfGame games={allVideogames} />
         </div>
+        <FilterBar />
       </main>
     </>
   );

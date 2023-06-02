@@ -1,15 +1,15 @@
 version: '3.1'
 
 services:
-  codrr:
+  db:
     image: postgres:15.1
-    container_name: videogames3  
+    container_name: dbgames
     restart: always
     environment:
-       POSTGRES_DB: videogames3
-       POSTGRES_USER: matti
-       POSTGRES_PASSWORD: secret1234
+      POSTGRES_DB: videogames
+      POSTGRES_USER: matti
+      POSTGRES_PASSWORD: secret34898525
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - 5432:5432
+      - 4000:5432

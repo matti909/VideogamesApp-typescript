@@ -112,3 +112,7 @@ package-lock.json
 config/
 
 README.md
+
+Dockerfile
+
+docker-compose.yml

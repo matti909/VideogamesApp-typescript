@@ -12,7 +12,7 @@ export const CardConteiner: React.FC<IGame> = ({ name, background_image, genres,
           <p>{name}</p>
         </h2>
         {<p>Generos: {genre.join(' , ')}</p>}
-        <p>Rating: {rating}</p>
+        <p>Rating: {'★'.repeat(rating).padEnd(5, '☆')}</p>
       </div>
     </div>
   );

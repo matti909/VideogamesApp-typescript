@@ -17,7 +17,7 @@ const getVideogames = async (): Promise<IGame[]> => {
   const resultado: IGame[] = apiGames.map((game) => {
     return {
       id: game.id,
-      name: game.name,
+      name: game.slug.toLowerCase(),
       slug: game.slug,
       background_image: game.background_image,
       released: game.released,
@@ -30,12 +30,28 @@ const getVideogames = async (): Promise<IGame[]> => {
 
   return resultado;
 };
-/*
-const insertGame = async (game: IGame) => {
-  const gameRepository = getManager().getRepository(game);
-  const newGame = gameRepository.create(game);
-  const res = await gameRepository.save(newGame);
-  return res;
+
+const getApiInfoById = async function (id: number) {
+  try {
+    const res = await axios.get(
+      `https://api.rawg.io/api/games/${id}?key=${DOGS_API_KEY}`
+    );
+    const gamesData: IGame = {
+      id: res.data.id,
+      name: res.data.name,
+      slug: res.data.slug,
+      description: res.data.description_raw,
+      background_image: res.data.background_image,
+      released: res.data.released,
+      rating: res.data.rating,
+      platforms: res.data.platforms.map((p) => p.platform.name),
+      genres: res.data.genres.map((g) => g.name)
+    };
+
+    return gamesData;
+  } catch (error) {
+    return null;
+  }
 };
-*/
-export { getVideogames };
+
+export { getVideogames, getApiInfoById };
