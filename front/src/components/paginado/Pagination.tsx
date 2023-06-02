@@ -1,0 +1,101 @@
+import { ListOfGame } from '../../components/listOfGame/ListOfGame';
+import { IGame } from 'interfaces/videogames.interface';
+import React, { useState } from 'react';
+import styles from './Pagination.module.scss';
+
+interface Props {
+  games: IGame[];
+}
+
+export const Pagination = ({ games }: Props) => {
+  const [currentPage, setcurrentPage] = useState(1);
+  const [itemsPerPage, setitemsPerPage] = useState(8);
+
+  const [pageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(10);
+  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+
+  let indexOfLastItem = currentPage * itemsPerPage;
+  let indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  let currentItems = games.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handleLoadMore = () => {
+    setitemsPerPage(itemsPerPage + 5);
+  };
+
+  const handleClick = (event: any) => {
+    setcurrentPage(Number(event.target.id));
+  };
+
+  const handleNextbtn = () => {
+    setcurrentPage(currentPage + 1);
+
+    if (currentPage + 1 > maxPageNumberLimit) {
+      setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  const handlePrevbtn = () => {
+    setcurrentPage(currentPage - 1);
+
+    if ((currentPage - 1) % pageNumberLimit === 0) {
+      setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
+
+  const pages = [];
+  for (let i = 1; i <= Math.ceil(games.length / itemsPerPage); i++) {
+    pages.push(i);
+  }
+
+  let pageDecrementBtn = null;
+  if (minPageNumberLimit >= 1) {
+    pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
+  }
+
+  let pageIncrementBtn = null;
+  if (pages.length > maxPageNumberLimit) {
+    pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
+  }
+
+  const renderPageNumbers = pages.map((number) => {
+    if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+      return (
+        <li key={number} id={number.toString()} onClick={handleClick}>
+          {number}
+        </li>
+      );
+    } else {
+      return null;
+    }
+  });
+
+  return (
+    <div>
+      <h1>VIDEOGAMES APP </h1>
+      <ul className={styles.unsort}>
+        <li>
+          <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
+            Prev
+          </button>
+        </li>
+        {pageDecrementBtn}
+        {renderPageNumbers}
+        {pageIncrementBtn}
+
+        <li>
+          <button
+            onClick={handleNextbtn}
+            disabled={currentPage === pages[pages.length - 1] ? true : false}
+          >
+            Next
+          </button>
+        </li>
+      </ul>
+      <ListOfGame games={currentItems} />
+      <button onClick={handleLoadMore}>Load More</button>
+    </div>
+  );
+};

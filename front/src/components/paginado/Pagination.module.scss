@@ -1,0 +1,20 @@
+@import './../../styles/variables.scss';
+.unsort {
+  list-style: none;
+  display: flex;
+  margin-top: 30px;
+  cursor: pointer;
+
+  & > li {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 1px solid rgba(44, 44, 48, 1);
+    cursor: pointer;
+
+    &:hover {
+      color: $bg;
+      background-color: black;
+    }
+  }
+}

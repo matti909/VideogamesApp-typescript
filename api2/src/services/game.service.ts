@@ -17,7 +17,7 @@ const getVideogames = async (): Promise<IGame[]> => {
   const resultado: IGame[] = apiGames.map((game) => {
     return {
       id: game.id,
-      name: game.slug.toLowerCase(),
+      name: game.name.toLowerCase(),
       slug: game.slug,
       background_image: game.background_image,
       released: game.released,
@@ -38,7 +38,7 @@ const getApiInfoById = async function (id: number) {
     );
     const gamesData: IGame = {
       id: res.data.id,
-      name: res.data.name,
+      name: res.data.name.toLowerCase(),
       slug: res.data.slug,
       description: res.data.description_raw,
       background_image: res.data.background_image,

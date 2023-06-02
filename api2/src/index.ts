@@ -3,7 +3,7 @@ import app from './app';
 import { appDataSource } from './db';
 
 require('dotenv').config();
-const PORT = process.env.PORT || 4002;
+const PORT = process.env.PORT || 5002;
 
 async function boostrap() {
   try {

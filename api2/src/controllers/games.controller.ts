@@ -16,18 +16,26 @@ const getGame = async (req: Request, res: Response) => {
 };
 
 const getGames = async (req: Request, res: Response) => {
-  const { name } = req.query;
-  const total = await getVideogames();
+  try {
+    const { name } = req.query;
+    const named = name?.toString().trim();
+    const total = await getVideogames();
 
-  if (name) {
-    let searchGame = total.filter((game) =>
-      game.name.toLowerCase().includes(String(name))
-    );
-    searchGame.length
-      ? res.status(200).send(searchGame)
-      : res.status(404).json({ msg: 'Game not Found 😕' });
-  } else {
-    res.status(201).send(total);
+    if (named) {
+      const searchGame = total.filter((game) =>
+        game.name.toLowerCase().includes(named.toLowerCase())
+      );
+
+      if (searchGame.length) {
+        res.status(200).json(searchGame);
+      } else {
+        res.status(400).json({ msg: 'Game not Found 😕' });
+      }
+    } else {
+      res.status(200).json(total);
+    }
+  } catch (error) {
+    res.status(500).json({ msg: 'Internal Server Error' });
   }
 };
 

@@ -9,8 +9,8 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.route('/').get(getGames).post(postGame);
+router.get('/', getGames);
 
-router.route('/:id').get(getGame).put(updateGame).delete(deleteGame);
+router.get('/:id', getGame);
 
 export { router };
