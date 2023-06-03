@@ -1,4 +1,4 @@
-import 'dotenv/config';
+require('dotenv').config();
 const { DOGS_API_KEY } = process.env;
 import type { IGame, IGenre, IPlatform } from 'src/interfaces/game.interface';
 import axios from 'axios';

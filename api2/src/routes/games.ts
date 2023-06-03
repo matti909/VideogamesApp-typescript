@@ -1,10 +1,4 @@
-import {
-  getGame,
-  getGames,
-  postGame,
-  updateGame,
-  deleteGame
-} from '@constrollers/games.controller';
+import { getGame, getGames } from '@constrollers/games.controller';
 import { Router } from 'express';
 
 const router = Router();

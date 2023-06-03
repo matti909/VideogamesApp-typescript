@@ -6,7 +6,7 @@ import { PlatformEntity } from './entities/platform.entity';
 
 export const appDataSource = new DataSource({
   type: 'postgres',
-  host: 'localhost',
+  host: '192.168.1.125',
   port: 4000,
   username: 'matti',
   password: 'secret34898525',

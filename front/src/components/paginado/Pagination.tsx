@@ -50,17 +50,7 @@ export const Pagination = ({ games }: Props) => {
     pages.push(i);
   }
 
-  let pageDecrementBtn = null;
-  if (minPageNumberLimit >= 1) {
-    pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
-  }
-
-  let pageIncrementBtn = null;
-  if (pages.length > maxPageNumberLimit) {
-    pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
-  }
-
-  const renderPageNumbers = pages.map((number) => {
+  let renderPageNumbers = pages.map((number) => {
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
       return (
         <li key={number} id={number.toString()} onClick={handleClick}>
@@ -71,6 +61,16 @@ export const Pagination = ({ games }: Props) => {
       return null;
     }
   });
+
+  let pageDecrementBtn = null;
+  if (minPageNumberLimit >= 1) {
+    pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
+  }
+
+  let pageIncrementBtn = null;
+  if (pages.length > maxPageNumberLimit) {
+    pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
+  }
 
   return (
     <div>
