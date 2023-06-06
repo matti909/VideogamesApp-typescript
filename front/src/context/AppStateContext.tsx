@@ -11,7 +11,6 @@ interface context {
   };
   actions: {
     toggleFavorites: (image: string) => void;
-    handleCheckbox: (e: any) => void;
   };
 }
 
@@ -83,16 +82,7 @@ export const AppStateProvider = ({ children }: Props) => {
 
   const [filteredGames, setFilteredGames] = useState<IGame[]>([]);
 
-  useEffect(() => {
-    console.log(filteredGames);
-  }, [filteredGames]);
-
-  function filtrarPorGenero(videojuegos: IGame[], genero: string): IGame[] {
-    return videojuegos.filter((juego) =>
-      juego.genres.some((g) => g.name.toLowerCase() === genero.toLowerCase()),
-    );
-  }
-
+  /*
   const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTypeSelected((prevTypeSelected) => ({
       ...prevTypeSelected,
@@ -111,7 +101,7 @@ export const AppStateProvider = ({ children }: Props) => {
       setFilteredGames((prevFilteredGames) => [...filteredResults]);
     }
   };
-
+*/
   return (
     <AppStateContext.Provider
       value={{
@@ -123,7 +113,6 @@ export const AppStateProvider = ({ children }: Props) => {
         },
         actions: {
           toggleFavorites,
-          handleCheckbox,
         },
       }}
     >

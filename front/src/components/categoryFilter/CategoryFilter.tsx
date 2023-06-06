@@ -20,7 +20,7 @@ export const CategoryFilter = ({ games, onChange }: Props) => {
       draft.delete(genero);
     }
 
-    onChange(draft.size ? (game) => draft.has(game) : null);
+    onChange(draft.size ? (game) => draft.has(game.toString()) : null);
     setSelected(draft);
   }
 

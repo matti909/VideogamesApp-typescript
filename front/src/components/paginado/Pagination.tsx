@@ -19,7 +19,7 @@ export const Pagination = ({ games }: Props) => {
     let matches = games;
 
     for (let filter of filterToApply) {
-      matches = matches.filter((el) => el.genres.some(filter));
+      matches = matches.filter((el) => el.genres.some(filter!));
     }
     return matches;
   }, [games, filters]);
@@ -63,15 +63,21 @@ export const Pagination = ({ games }: Props) => {
     }
   };
 
-  const pages = [];
-  for (let i = 1; i <= Math.ceil(games.length / itemsPerPage); i++) {
+  const pages: number[] = [];
+  for (let i = 1; i <= Math.ceil(currentItems.length / itemsPerPage); i++) {
     pages.push(i);
   }
 
   let renderPageNumbers = pages.map((number) => {
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
       return (
-        <li key={number} id={number.toString()} onClick={handleClick}>
+        <li
+          key={number}
+          id={number.toString()}
+          onClick={handleClick}
+          //className={`${currentPage === number ? [styles.active].join('') : null}`}
+          className={`${currentPage === number ? styles.active : null}`}
+        >
           {number}
         </li>
       );
@@ -98,33 +104,31 @@ export const Pagination = ({ games }: Props) => {
           onChange={(filter: Filter) => setFilter((filters) => ({ ...filters, genero: filter }))}
         />
       </aside>
-      <h2>{matches.length} Resultados</h2>
-      <div>
-        <section style={{ flex: '1' }}>
-          <h1>VIDEOGAMES APP </h1>
-          <ul className={styles.unsort}>
-            <li>
-              <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
-                Prev
-              </button>
-            </li>
-            {pageDecrementBtn}
-            {renderPageNumbers}
-            {pageIncrementBtn}
 
-            <li>
-              <button
-                onClick={handleNextbtn}
-                disabled={currentPage === pages[pages.length - 1] ? true : false}
-              >
-                Next
-              </button>
-            </li>
-          </ul>
-          <ListOfGame games={currentItems} />
-          <button onClick={handleLoadMore}>Load More</button>
-        </section>
-      </div>
+      <section style={{ flex: 1 }}>
+        <h1>VIDEOGAMES APP </h1>
+        <ul className={styles.pageNumbers}>
+          <li>
+            <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
+              Prev
+            </button>
+          </li>
+          {pageDecrementBtn}
+          {renderPageNumbers}
+          {pageIncrementBtn}
+
+          <li>
+            <button
+              onClick={handleNextbtn}
+              disabled={currentPage === pages[pages.length - 1] ? true : false}
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+        <ListOfGame games={currentItems} />
+        <button onClick={handleLoadMore}>Load More</button>
+      </section>
     </div>
   );
 };

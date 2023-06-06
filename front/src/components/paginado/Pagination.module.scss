@@ -1,8 +1,9 @@
 @import './../../styles/variables.scss';
 
-.unsort {
+.pageNumbers {
   list-style: none;
   display: flex;
+  flex: 1;
   margin-top: 30px;
   cursor: pointer;
 
@@ -13,9 +14,31 @@
     border: 1px solid rgba(44, 44, 48, 1);
     cursor: pointer;
 
+    & > button {
+      background-color: transparent;
+      border: none;
+      color: rgba(44, 44, 48, 1);
+      font-size: 1.5rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+
     &:hover {
       color: $bg;
       background-color: black;
+      &.active {
+        color: $bg;
+        background-color: black;
+      }
+    }
+
+    &.active {
+      background-color: rgba(44, 44, 48, 1);
+      color: $bg; // Asegúrate de que $bg esté definido antes de esta línea
     }
   }
 }

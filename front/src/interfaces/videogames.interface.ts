@@ -19,4 +19,4 @@ export interface IPlatform {
   name: string;
 }
 
-export type Filter = null | ((game: IGame) => boolean);
+export type Filter = null | ((game: IGenre) => boolean);
