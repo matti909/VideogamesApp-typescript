@@ -1,12 +1,9 @@
 import React from 'react';
 import Header from '../../components/header/Header';
 import { useAppState } from '../../context/AppStateContext';
-import FilterBar from '../../components/filterBar/FilterBar';
 import { Pagination } from '../../components/paginado/Pagination';
 
-type Props = {};
-
-const Home = (props: Props) => {
+export const Home = () => {
   const { state } = useAppState();
   const { allVideogames } = state;
 
@@ -16,13 +13,10 @@ const Home = (props: Props) => {
         <Header />
       </header>
       <main>
-        <div>
+        <section style={{ flex: '1' }}>
           <Pagination games={allVideogames} />
-        </div>
-        <FilterBar />
+        </section>
       </main>
     </>
   );
 };
-
-export default Home;

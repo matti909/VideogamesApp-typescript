@@ -10,17 +10,13 @@ export interface IGame {
 }
 
 export interface IGenre {
-  id: number;
-  name: string;
-  slug: string;
-  image_background: string;
+  id?: number;
+  name?: string;
 }
 
 export interface IPlatform {
-  id: number;
+  id?: number;
   name: string;
-  slug: string;
-  image?: any;
-  games_count?: number;
-  image_background: string;
 }
+
+export type Filter = null | ((game: IGame) => boolean);

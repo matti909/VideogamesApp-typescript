@@ -1,23 +1,41 @@
 import { ListOfGame } from '../../components/listOfGame/ListOfGame';
-import { IGame } from 'interfaces/videogames.interface';
-import React, { useState } from 'react';
+import type { Filter, IGame } from 'interfaces/videogames.interface';
+import React, { useMemo, useState } from 'react';
 import styles from './Pagination.module.scss';
+import { CategoryFilter } from '../../components/categoryFilter/CategoryFilter';
 
 interface Props {
   games: IGame[];
 }
 
 export const Pagination = ({ games }: Props) => {
-  const [currentPage, setcurrentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(8);
+  const [filters, setFilter] = useState<Record<string, Filter>>({
+    genero: null,
+    plataforma: null,
+  });
+
+  const matches = useMemo(() => {
+    const filterToApply = Object.values(filters).filter(Boolean!);
+    let matches = games;
+
+    for (let filter of filterToApply) {
+      matches = matches.filter((el) => el.genres.some(filter));
+    }
+    return matches;
+  }, [games, filters]);
+
+  console.log(matches);
+
+  const [currentPage, setcurrentPage] = useState<number>(1);
+  const [itemsPerPage, setitemsPerPage] = useState<number>(8);
 
   const [pageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(10);
-  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState<number>(10);
+  const [minPageNumberLimit, setminPageNumberLimit] = useState<number>(0);
 
   let indexOfLastItem = currentPage * itemsPerPage;
   let indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  let currentItems = games.slice(indexOfFirstItem, indexOfLastItem);
+  let currentItems: IGame[] = matches.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleLoadMore = () => {
     setitemsPerPage(itemsPerPage + 5);
@@ -73,29 +91,40 @@ export const Pagination = ({ games }: Props) => {
   }
 
   return (
-    <div>
-      <h1>VIDEOGAMES APP </h1>
-      <ul className={styles.unsort}>
-        <li>
-          <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
-            Prev
-          </button>
-        </li>
-        {pageDecrementBtn}
-        {renderPageNumbers}
-        {pageIncrementBtn}
+    <div style={{ display: 'flex' }}>
+      <aside>
+        <CategoryFilter
+          games={games}
+          onChange={(filter: Filter) => setFilter((filters) => ({ ...filters, genero: filter }))}
+        />
+      </aside>
+      <h2>{matches.length} Resultados</h2>
+      <div>
+        <section style={{ flex: '1' }}>
+          <h1>VIDEOGAMES APP </h1>
+          <ul className={styles.unsort}>
+            <li>
+              <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
+                Prev
+              </button>
+            </li>
+            {pageDecrementBtn}
+            {renderPageNumbers}
+            {pageIncrementBtn}
 
-        <li>
-          <button
-            onClick={handleNextbtn}
-            disabled={currentPage === pages[pages.length - 1] ? true : false}
-          >
-            Next
-          </button>
-        </li>
-      </ul>
-      <ListOfGame games={currentItems} />
-      <button onClick={handleLoadMore}>Load More</button>
+            <li>
+              <button
+                onClick={handleNextbtn}
+                disabled={currentPage === pages[pages.length - 1] ? true : false}
+              >
+                Next
+              </button>
+            </li>
+          </ul>
+          <ListOfGame games={currentItems} />
+          <button onClick={handleLoadMore}>Load More</button>
+        </section>
+      </div>
     </div>
   );
 };
