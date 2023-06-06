@@ -20,7 +20,7 @@ export const SearchBar = () => {
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit}>
+      <form onSubmit={(e) => handleSubmit} style={{ display: 'flex' }}>
         <div className={styles.inputt}>
           <input
             type="search"

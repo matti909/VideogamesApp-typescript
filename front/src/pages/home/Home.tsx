@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../components/header/Header';
 import { useAppState } from '../../context/AppStateContext';
 import { Pagination } from '../../components/paginado/Pagination';
+import { SearchBar } from '../../components/searchBar';
 
 export const Home = () => {
   const { state } = useAppState();

@@ -6,7 +6,7 @@ export const CardConteiner: React.FC<IGame> = ({ name, background_image, genres,
   let genre = genres.map((e) => e);
   return (
     <div className={styles.cardContainer}>
-      <img src={background_image} alt="unknown" />
+      <img src={background_image} alt="unknown" loading="lazy" />
       <div>
         <h2>
           <p>{name}</p>

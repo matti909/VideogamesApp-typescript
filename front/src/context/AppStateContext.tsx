@@ -7,10 +7,18 @@ interface context {
     favorites: string[];
     allVideogames: IGame[];
     genres: IGenre[];
-    filteredGames: IGame[];
+    currentPage: number;
+    itemsPerPage: number;
+    pageNumberLimit: number;
+    maxPageNumberLimit: number;
+    minPageNumberLimit: number;
   };
   actions: {
     toggleFavorites: (image: string) => void;
+    handleLoadMore: () => void;
+    handleMoreClick: (event: any) => void;
+    handleNextbtn: () => void;
+    handlePrevbtn: () => void;
   };
 }
 
@@ -21,6 +29,39 @@ interface Props {
 const AppStateContext = createContext({} as context);
 
 export const AppStateProvider = ({ children }: Props) => {
+  const [currentPage, setcurrentPage] = useState(1);
+  const [itemsPerPage, setitemsPerPage] = useState(8);
+
+  const [pageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(4);
+  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+
+  const handleLoadMore = () => {
+    setitemsPerPage(itemsPerPage + 5);
+  };
+
+  const handleMoreClick = (event: any) => {
+    setcurrentPage(Number(event.target.id));
+  };
+
+  const handleNextbtn = () => {
+    setcurrentPage(currentPage + 1);
+
+    if (currentPage + 1 > maxPageNumberLimit) {
+      setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  const handlePrevbtn = () => {
+    setcurrentPage(currentPage - 1);
+
+    if ((currentPage - 1) % pageNumberLimit === 0) {
+      setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
+
   const [favorites, setFavorites] = useState<string[]>([]);
 
   const [allVideogames, setAllVideogames] = useState<IGame[]>([]);
@@ -57,51 +98,6 @@ export const AppStateProvider = ({ children }: Props) => {
     }
   }
 
-  const [typeSelected, setTypeSelected] = useState({
-    action: false,
-    indie: false,
-    adventure: false,
-    rpg: false,
-    strategy: false,
-    shooter: false,
-    casual: false,
-    simulation: false,
-    puzzle: false,
-    arcade: false,
-    platformer: false,
-    massivemultipleyer: false,
-    racing: false,
-    sports: false,
-    fighting: false,
-    family: false,
-    boardgames: false,
-    educational: false,
-    card: false,
-    shadow: false,
-  });
-
-  const [filteredGames, setFilteredGames] = useState<IGame[]>([]);
-
-  /*
-  const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTypeSelected((prevTypeSelected) => ({
-      ...prevTypeSelected,
-      [e.target.name]: e.target.checked,
-    }));
-
-    if (e.target.name) {
-      const filteredResults: IGame[] = allVideogames.filter((game) =>
-        game.genres.map((type) => type.name).includes(e.target.name),
-      );
-      setFilteredGames([...filteredGames, ...filteredResults]);
-    } else {
-      const filteredResults: IGame[] = filteredGames.filter(
-        (game) => !game.genres.some((genre) => genre.name === e.target.name),
-      );
-      setFilteredGames((prevFilteredGames) => [...filteredResults]);
-    }
-  };
-*/
   return (
     <AppStateContext.Provider
       value={{
@@ -109,10 +105,18 @@ export const AppStateProvider = ({ children }: Props) => {
           favorites,
           allVideogames,
           genres,
-          filteredGames,
+          currentPage,
+          itemsPerPage,
+          maxPageNumberLimit,
+          minPageNumberLimit,
+          pageNumberLimit,
         },
         actions: {
           toggleFavorites,
+          handleMoreClick,
+          handleLoadMore,
+          handleNextbtn,
+          handlePrevbtn,
         },
       }}
     >

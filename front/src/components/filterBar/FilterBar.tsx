@@ -10,7 +10,7 @@ type Props = {};
 const FilterBar = (props: Props) => {
   const { state, actions } = useAppState();
   const { genres } = state;
-  const { handleCheckbox } = actions;
+
   const [active, setActive] = useState(false);
 
   const menuToggler = () => setActive((prev) => !prev);
@@ -28,7 +28,7 @@ const FilterBar = (props: Props) => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => handleCheckbox(e)}
+                    //onChange={(e) => handleCheckbox(e)}
                     name={genre.name}
                     id={genre.name}
                   />
