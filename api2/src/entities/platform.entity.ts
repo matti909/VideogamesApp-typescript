@@ -7,8 +7,9 @@ import {
 } from 'typeorm';
 
 import { IPlatform } from 'src/interfaces/game.interface';
-import { BaseEntity } from 'src/config/base.entity';
+
 import { GamesEntity } from './games.entity';
+import { BaseEntity } from '../../src/config/base.entity';
 
 @Entity({ name: 'platforms' })
 export class PlatformEntity extends BaseEntity implements IPlatform {

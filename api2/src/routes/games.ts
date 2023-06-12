@@ -1,4 +1,4 @@
-import { getGame, getGames } from '@constrollers/games.controller';
+import { getGame, getGames } from '../controllers/games.controller';
 import { Router } from 'express';
 
 const router = Router();

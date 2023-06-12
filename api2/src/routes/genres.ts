@@ -1,4 +1,4 @@
-import { getGenre } from '@constrollers/genres.controller';
+import { getGenre } from '../controllers/genres.controller';
 import { Router } from 'express';
 
 const router = Router();

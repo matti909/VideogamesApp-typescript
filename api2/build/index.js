@@ -1,25 +1,22 @@
-import 'reflect-metadata';
+"use strict";
 
-import { app } from './app';
-import { appDataSource } from './ormconfig';
-
+require("reflect-metadata");
+var _app = require("./app");
+var _ormconfig = require("./ormconfig");
 require('dotenv').config();
 const PORT = process.env.PORT || 5002;
-
 async function boostrap() {
   try {
-    await appDataSource.initialize();
+    await _ormconfig.appDataSource.initialize();
     console.log('Database connected!');
-    app.listen(PORT, () => {
+    _app.app.listen(PORT, () => {
       console.log('Server running OK!!');
     });
-
     console.log('Server is listening on port:', PORT);
   } catch (err) {
     console.log(err);
   }
 }
-
 boostrap();
 function db() {
   throw new Error('Function not implemented.');

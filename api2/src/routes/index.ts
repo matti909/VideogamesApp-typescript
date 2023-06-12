@@ -1,20 +1,13 @@
+import 'dotenv/config';
 import { Router } from 'express';
-import { readdirSync } from 'fs';
+import { getGames, getGame } from '../controllers/games.controller';
+import { getGenre } from '../controllers/genres.controller';
 
-const PATH_ROUTER = `${__dirname}`;
 const router = Router();
 
-const cleanFileName = (fileName: string) => {
-  return fileName.replace('.ts', '');
-};
+router.get('/games', getGames);
+router.get('/games/:id', getGame);
 
-readdirSync(PATH_ROUTER).filter((fileName) => {
-  const cleanName = cleanFileName(fileName);
-  if (cleanName !== 'index') {
-    import(`./${cleanName}`).then((moduleRouter) => {
-      router.use(`/${cleanName}`, moduleRouter.router);
-    });
-  }
-});
+router.get('/genres', getGenre);
 
 export { router };

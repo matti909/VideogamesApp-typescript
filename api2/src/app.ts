@@ -19,6 +19,6 @@ app.use(compress());
 app.use(helmet());
 app.use(cors());
 
-app.use(router);
+app.use('/', router);
 
-export default app;
+export { app };

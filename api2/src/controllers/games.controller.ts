@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { getApiInfoById, getVideogames } from 'src/services/game.service';
-import { handleHttp } from 'src/utils/error.handle';
+import { getApiInfoById, getVideogames } from './../services/game.service';
+import { handleHttp } from './../utils/error.handle';
 
 const getGame = async (req: Request, res: Response) => {
   const { id } = req.params;

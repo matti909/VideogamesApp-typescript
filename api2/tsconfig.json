@@ -10,11 +10,23 @@
       "@routes/*": [
         "./src/routes/*"
       ],
-      "@constrollers/*": [
+      "@interfaces/*": [
+        "./src/interfaces"
+      ],
+      "@controllers/*": [
         "./src/controllers/*"
       ],
       "@config/*": [
-        "./src/confing/*"
+        "./src/config/*"
+      ],
+      "@entities/*": [
+        "./src/entities"
+      ],
+      "@services": [
+        "./src/services"
+      ],
+      "@utils": [
+        "./src/utils"
       ]
     },
     "typeRoots": [

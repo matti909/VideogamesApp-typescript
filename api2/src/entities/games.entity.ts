@@ -5,10 +5,11 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { IGame, IGenre } from 'src/interfaces/game.interface';
-import { BaseEntity } from 'src/config/base.entity';
+import { IGame, IGenre } from '../../src/interfaces/game.interface';
+
 import { PlatformEntity } from './platform.entity';
 import { GenreEntity } from './genre.entity';
+import { BaseEntity } from '../../src/config/base.entity';
 
 @Entity({ name: 'games' })
 export class GamesEntity extends BaseEntity implements IGame {

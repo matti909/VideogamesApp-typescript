@@ -1,6 +1,6 @@
-import { getGenres } from 'src/services/genre.service';
+import { getGenres } from './../services/genre.service';
 import { Request, Response } from 'express';
-import { handleHttp } from 'src/utils/error.handle';
+import { handleHttp } from './../utils/error.handle';
 
 const getGenre = async (req: Request, res: Response) => {
   try {

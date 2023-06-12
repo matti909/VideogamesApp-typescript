@@ -6,8 +6,9 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 import { GamesEntity } from './games.entity';
-import { BaseEntity } from 'src/config/base.entity';
+
 import { IGenre } from 'src/interfaces/game.interface';
+import { BaseEntity } from '../../src/config/base.entity';
 
 @Entity({ name: 'genres' })
 export class GenreEntity extends BaseEntity implements IGenre {
