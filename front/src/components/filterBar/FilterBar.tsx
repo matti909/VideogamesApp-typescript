@@ -3,12 +3,9 @@ import styles from './FilterBar.module.scss';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 import { useAppState } from '../../context/AppStateContext';
-import { IGame } from 'interfaces/videogames.interface';
 
-type Props = {};
-
-const FilterBar = (props: Props) => {
-  const { state, actions } = useAppState();
+export const FilterBar = () => {
+  const { state } = useAppState();
   const { genres } = state;
 
   const [active, setActive] = useState(false);
@@ -42,5 +39,3 @@ const FilterBar = (props: Props) => {
     </div>
   );
 };
-
-export default FilterBar;

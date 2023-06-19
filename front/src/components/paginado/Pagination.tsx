@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
-import { ListOfGame } from '../../components/listOfGame/ListOfGame';
-import type { Filter, IGame } from 'interfaces/videogames.interface';
 import styles from './Pagination.module.scss';
+import type { Filter, IGame } from 'interfaces/videogames.interface';
+import { ListOfGame } from '../../components/listOfGame/ListOfGame';
 import { CategoryFilter } from '../../components/categoryFilter/CategoryFilter';
 import { useAppState } from '../../context/AppStateContext';
 import { SearchBar } from '../../components/searchBar';

@@ -1,77 +1,54 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlatformEntity = void 0;
-var _typeorm = require("typeorm");
-var _games = require("./games.entity");
-var _base = require("../../src/config/base.entity");
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
-function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
-function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
-let PlatformEntity = (_dec = (0, _typeorm.Entity)({
-  name: 'platforms'
-}), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)(), _dec3 = (0, _typeorm.Column)(), _dec4 = (0, _typeorm.Column)(), _dec5 = (0, _typeorm.Column)(), _dec6 = (0, _typeorm.Column)({
-  nullable: true
-}), _dec7 = (0, _typeorm.Column)({
-  nullable: true,
-  name: 'year_end'
-}), _dec8 = (0, _typeorm.Column)({
-  nullable: true,
-  name: 'year_start'
-}), _dec9 = (0, _typeorm.ManyToMany)(() => _games.GamesEntity, game => game.platforms), _dec10 = (0, _typeorm.JoinTable)(), _dec(_class = (_class2 = class PlatformEntity extends _base.BaseEntity {
-  constructor(...args) {
-    super(...args);
-    _initializerDefineProperty(this, "id", _descriptor, this);
-    _initializerDefineProperty(this, "name", _descriptor2, this);
-    _initializerDefineProperty(this, "games_count", _descriptor3, this);
-    _initializerDefineProperty(this, "slug", _descriptor4, this);
-    _initializerDefineProperty(this, "image_background", _descriptor5, this);
-    _initializerDefineProperty(this, "yearEnd", _descriptor6, this);
-    _initializerDefineProperty(this, "yearStart", _descriptor7, this);
-    _initializerDefineProperty(this, "games", _descriptor8, this);
-  }
-}, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "id", [_dec2], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "name", [_dec3], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "games_count", [_dec4], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "slug", [_dec5], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "image_background", [_dec6], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "yearEnd", [_dec7], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "yearStart", [_dec8], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "games", [_dec9, _dec10], {
-  configurable: true,
-  enumerable: true,
-  writable: true,
-  initializer: null
-})), _class2)) || _class);
+const typeorm_1 = require("typeorm");
+const games_entity_1 = require("./games.entity");
+const base_entity_1 = require("../../src/config/base.entity");
+let PlatformEntity = class PlatformEntity extends base_entity_1.BaseEntity {
+};
+__decorate([
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    __metadata("design:type", Number)
+], PlatformEntity.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], PlatformEntity.prototype, "name", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], PlatformEntity.prototype, "games_count", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], PlatformEntity.prototype, "slug", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], PlatformEntity.prototype, "image_background", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true, name: 'year_end' }),
+    __metadata("design:type", Number)
+], PlatformEntity.prototype, "yearEnd", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true, name: 'year_start' }),
+    __metadata("design:type", Number)
+], PlatformEntity.prototype, "yearStart", void 0);
+__decorate([
+    (0, typeorm_1.ManyToMany)(() => games_entity_1.GamesEntity, (game) => game.platforms),
+    (0, typeorm_1.JoinTable)(),
+    __metadata("design:type", Array)
+], PlatformEntity.prototype, "games", void 0);
+PlatformEntity = __decorate([
+    (0, typeorm_1.Entity)({ name: 'platforms' })
+], PlatformEntity);
 exports.PlatformEntity = PlatformEntity;

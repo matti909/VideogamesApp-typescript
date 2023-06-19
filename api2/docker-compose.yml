@@ -1,26 +1,14 @@
-version: '3.1'
+version: '3.8'
 
 services:
-  db:
+  postgres:
     image: postgres:15.1
-    container_name: dbgames
-    restart: always
+
     environment:
-      POSTGRES_DB: videogames
       POSTGRES_USER: matti
       POSTGRES_PASSWORD: secret34898525
+      POSTGRES_DB: videogames
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - 5432:5432
-
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: appnode
-    restart: always
-    ports:
-      - 3000:3000
-    depends_on:
-      - db
+      - 30000:5432

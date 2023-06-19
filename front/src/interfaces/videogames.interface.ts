@@ -3,7 +3,7 @@ export interface IGame {
   slug?: string;
   name: string;
   released?: string;
-  background_image: string;
+  background_image?: string;
   rating: number;
   platforms: IPlatform[];
   genres: string[] | IGenre[];

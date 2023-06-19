@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "nodemon",
-    "build": "webpack --config webpack.prod.config.ts"
+    "build": "webpack --config webpack.dev.config.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",

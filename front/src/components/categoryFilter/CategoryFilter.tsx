@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import styles from './CategoryFilter.module.scss';
-import { Filter, IGame, IGenre } from 'interfaces/videogames.interface';
+import { Filter, IGame } from 'interfaces/videogames.interface';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 

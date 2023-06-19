@@ -33,6 +33,7 @@
       "./node_modules/@types",
       "./src/@types"
     ],
+    "types": [],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,

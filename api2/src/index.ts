@@ -19,8 +19,4 @@ async function boostrap() {
     console.log(err);
   }
 }
-
 boostrap();
-function db() {
-  throw new Error('Function not implemented.');
-}

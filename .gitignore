@@ -116,3 +116,5 @@ README.md
 Dockerfile
 
 docker-compose.yml
+
+build/

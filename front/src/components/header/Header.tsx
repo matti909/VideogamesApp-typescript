@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './Header.module.scss';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
+import { FaSlidersH } from 'react-icons/fa';
 import React from 'react';
 
 const Header = () => {

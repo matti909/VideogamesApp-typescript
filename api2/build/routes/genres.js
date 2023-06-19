@@ -1,11 +1,8 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
-var _genres = require("../controllers/genres.controller");
-var _express = require("express");
-const router = (0, _express.Router)();
+const genres_controller_1 = require("../controllers/genres.controller");
+const express_1 = require("express");
+const router = (0, express_1.Router)();
 exports.router = router;
-router.get('/', _genres.getGenre);
+router.get('/', genres_controller_1.getGenre);

@@ -1,15 +1,12 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 require("dotenv/config");
-var _express = require("express");
-var _games = require("../controllers/games.controller");
-var _genres = require("../controllers/genres.controller");
-const router = (0, _express.Router)();
+const express_1 = require("express");
+const games_controller_1 = require("../controllers/games.controller");
+const genres_controller_1 = require("../controllers/genres.controller");
+const router = (0, express_1.Router)();
 exports.router = router;
-router.get('/games', _games.getGames);
-router.get('/games/:id', _games.getGame);
-router.get('/genres', _genres.getGenre);
+router.get('/games', games_controller_1.getGames);
+router.get('/games/:id', games_controller_1.getGame);
+router.get('/genres', genres_controller_1.getGenre);
