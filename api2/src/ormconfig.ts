@@ -1,8 +1,9 @@
 import 'dotenv/config';
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 const entitiesPath = __dirname + process.env.POSTGRES_ENTITIES;
 
-export const appDataSource = new DataSource({
+export const DataSourceConfig: DataSourceOptions = {
   type: 'postgres',
   host: process.env.POSTGRES_HOST,
   port: Number(process.env.POSTGRES_PORT),
@@ -11,5 +12,8 @@ export const appDataSource = new DataSource({
   database: process.env.POSTGRES_DATABASE,
   synchronize: true,
   logging: false,
-  entities: [entitiesPath]
-});
+  entities: [entitiesPath],
+  namingStrategy: new SnakeNamingStrategy()
+};
+
+export const AppDS = new DataSource(DataSourceConfig);

@@ -46,9 +46,11 @@ const updateGame = async (req: Request, res: Response) => {
   }
 };
 
-const postGame = async (req: Request, res: Response) => {
+const createGame = async (req: Request, res: Response) => {
   try {
-    res.send(console.log('hello world'));
+    const { name, description, image, released, rating, platforms, genres } =
+      req.body;
+    const game = new Game(body);
   } catch (err) {
     handleHttp(res, 'Aqui un error', err);
   }
@@ -61,4 +63,4 @@ const deleteGame = async (req: Request, res: Response) => {
   }
 };
 
-export { getGame, getGames, updateGame, deleteGame, postGame };
+export { getGame, getGames, updateGame, deleteGame, createGame };

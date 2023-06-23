@@ -1,5 +1,0 @@
-{
-  "verbose": false,
-  "exec": "webpack serve --hot --config webpack.dev.config.ts",
-  "ext": "ts,tsx,js,json"
-}

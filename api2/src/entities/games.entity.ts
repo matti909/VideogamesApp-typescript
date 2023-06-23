@@ -5,7 +5,7 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { IGame, IGenre } from '../../src/interfaces/game.interface';
+import { IGame } from '../../src/interfaces/game.interface';
 
 import { PlatformEntity } from './platform.entity';
 import { GenreEntity } from './genre.entity';

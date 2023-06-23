@@ -1,14 +1,14 @@
 import 'reflect-metadata';
 
 import { app } from './app';
-import { appDataSource } from './ormconfig';
+import { AppDS } from './ormconfig';
 
 require('dotenv').config();
 const PORT = process.env.PORT || 5002;
 
 async function boostrap() {
   try {
-    await appDataSource.initialize();
+    await AppDS.initialize();
     console.log('Database connected!');
     app.listen(PORT, () => {
       console.log('Server running OK!!');

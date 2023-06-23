@@ -1,0 +1,14 @@
+@import "./_main.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bg;
+  color: $primary;
+  font-family: $ubuntu-font;
+}

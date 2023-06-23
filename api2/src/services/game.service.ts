@@ -2,6 +2,8 @@ require('dotenv').config();
 const { DOGS_API_KEY } = process.env;
 import type { IGame, IGenre, IPlatform } from 'src/interfaces/game.interface';
 import axios from 'axios';
+import { GamesEntity } from 'src/entities/games.entity';
+import { AppDS } from 'src/ormconfig';
 
 const getVideogames = async (): Promise<IGame[]> => {
   const apiGames: IGame[] = [];
@@ -54,4 +56,10 @@ const getApiInfoById = async function (id: number) {
   }
 };
 
-export { getVideogames, getApiInfoById };
+const createGame = async (body) => {
+  const game = AppDS.getRepository(GamesEntity).create(body);
+  const results = await AppDS.getRepository(GamesEntity).save(game);
+  return results;
+};
+
+export { getVideogames, getApiInfoById, createGame };

@@ -19,21 +19,6 @@ export class PlatformEntity extends BaseEntity implements IPlatform {
   @Column()
   name: string;
 
-  @Column()
-  games_count: number;
-
-  @Column()
-  slug: string;
-
-  @Column({ nullable: true })
-  image_background: string;
-
-  @Column({ nullable: true, name: 'year_end' })
-  yearEnd: number;
-
-  @Column({ nullable: true, name: 'year_start' })
-  yearStart: number;
-
   @ManyToMany(() => GamesEntity, (game) => game.platforms)
   @JoinTable()
   games: GamesEntity[];
