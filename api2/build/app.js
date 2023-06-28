@@ -1,25 +1,32 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.app = void 0;
-const express_1 = __importDefault(require("express"));
-const morgan_1 = __importDefault(require("morgan"));
-const cors_1 = __importDefault(require("cors"));
-const body_parser_1 = __importDefault(require("body-parser"));
-const cookie_parser_1 = __importDefault(require("cookie-parser"));
-const compression_1 = __importDefault(require("compression"));
-const helmet_1 = __importDefault(require("helmet"));
-const routes_1 = require("./routes");
+require("reflect-metadata");
+var _express = _interopRequireDefault(require("express"));
+var _morgan = _interopRequireDefault(require("morgan"));
+var _cors = _interopRequireDefault(require("cors"));
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+var _cookieParser = _interopRequireDefault(require("cookie-parser"));
+var _compression = _interopRequireDefault(require("compression"));
+var _helmet = _interopRequireDefault(require("helmet"));
+var _routes = require("./routes");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 require('dotenv').config();
-const app = (0, express_1.default)();
+const app = (0, _express.default)();
 exports.app = app;
-app.use((0, morgan_1.default)('dev'));
-app.use(body_parser_1.default.urlencoded({ extended: true, limit: '50mb' }));
-app.use(body_parser_1.default.json({ limit: '50mb' }));
-app.use((0, cookie_parser_1.default)());
-app.use((0, compression_1.default)());
-app.use((0, helmet_1.default)());
-app.use((0, cors_1.default)());
-app.use('/', routes_1.router);
+app.use((0, _morgan.default)('dev'));
+app.use(_bodyParser.default.urlencoded({
+  extended: true,
+  limit: '50mb'
+}));
+app.use(_bodyParser.default.json({
+  limit: '50mb'
+}));
+app.use((0, _cookieParser.default)());
+app.use((0, _compression.default)());
+app.use((0, _helmet.default)());
+app.use((0, _cors.default)());
+app.use('/', _routes.router);

@@ -6,39 +6,35 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 import { IGame } from '../../src/interfaces/game.interface';
-
 import { PlatformEntity } from './platform.entity';
-import { GenreEntity } from './genre.entity';
-import { BaseEntity } from '../../src/config/base.entity';
+import { Genre } from './genre.entity';
+import { BaseEntity } from './../config/base.entity';
 
 @Entity({ name: 'games' })
-export class GamesEntity extends BaseEntity implements IGame {
+export class Games extends BaseEntity implements IGame {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true })
+  @Column({ name: 'name', type: 'varchar' })
   name: string;
 
-  @Column({ unique: true })
-  slug: string;
-
-  @Column({ name: 'background_image' })
+  @Column({ name: 'background_image', type: 'varchar' })
   background_image: string;
 
-  @Column()
+  @Column({ name: 'description', type: 'text' })
   description: string;
 
-  @Column()
+  @Column({ name: 'released', type: 'varchar' })
   released: string;
 
-  @Column()
+  @Column({ name: 'rating', type: 'float' })
   rating: number;
 
   @ManyToMany(() => PlatformEntity)
   @JoinTable()
   platforms: PlatformEntity[];
 
-  @ManyToMany(() => GenreEntity)
+  @ManyToMany(() => Genre)
   @JoinTable()
-  genres: GenreEntity[];
+  genres: Genre[];
 }

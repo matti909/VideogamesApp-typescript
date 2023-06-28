@@ -1,10 +1,12 @@
+import { DeepPartial } from 'typeorm';
+import axios from 'axios';
+
+import type { IGame, IGenre, IPlatform } from 'src/interfaces/game.interface';
+import { Games } from '../entities/games.entity';
+import { AppDS } from '../ormconfig';
+
 require('dotenv').config();
 const { DOGS_API_KEY } = process.env;
-import type { IGame, IGenre, IPlatform } from 'src/interfaces/game.interface';
-import axios from 'axios';
-import { GamesEntity } from 'src/entities/games.entity';
-import { AppDS } from 'src/ormconfig';
-import { DeepPartial } from 'typeorm';
 
 const getVideogames = async (): Promise<IGame[]> => {
   const apiGames: IGame[] = [];
@@ -57,10 +59,17 @@ const getApiInfoById = async function (id: number) {
   }
 };
 
-const createGame = async function (body: DeepPartial<GamesEntity>) {
-  const game = AppDS.getRepository(GamesEntity).create({ ...body });
-  const results = await AppDS.getRepository(GamesEntity).save(game);
-  return results;
+const postRepository = AppDS.getRepository(Games);
+
+const createNewGame = async (body: DeepPartial<Games>) => {
+  return await postRepository.save(postRepository.create({ ...body }));
 };
 
-export { getVideogames, getApiInfoById, createGame };
+/*
+const createNewGame = async function (body: DeepPartial<Games>, game: Games) {
+  const res = AppDS.getRepository(Games).create({ ...body });
+  return await AppDS.getRepository(Games).save(res);
+};
+*/
+
+export { getVideogames, getApiInfoById, createNewGame };

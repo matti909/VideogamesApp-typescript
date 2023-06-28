@@ -1,34 +1,33 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.GenreEntity = void 0;
-const typeorm_1 = require("typeorm");
-const games_entity_1 = require("./games.entity");
-const base_entity_1 = require("../../src/config/base.entity");
-let GenreEntity = class GenreEntity extends base_entity_1.BaseEntity {
-};
-__decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
-    __metadata("design:type", Number)
-], GenreEntity.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], GenreEntity.prototype, "name", void 0);
-__decorate([
-    (0, typeorm_1.ManyToMany)(() => games_entity_1.GamesEntity, (game) => game.genres),
-    (0, typeorm_1.JoinTable)(),
-    __metadata("design:type", Array)
-], GenreEntity.prototype, "games", void 0);
-GenreEntity = __decorate([
-    (0, typeorm_1.Entity)({ name: 'genres' })
-], GenreEntity);
-exports.GenreEntity = GenreEntity;
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Genre = void 0;
+var _typeorm = require("typeorm");
+var _games = require("./games.entity");
+var _base = require("./../config/base.entity");
+var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2;
+function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+let Genre = (_dec = (0, _typeorm.Entity)({
+  name: 'genres'
+}), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)(), _dec3 = (0, _typeorm.ManyToMany)(() => _games.Games, game => game.genres), _dec4 = (0, _typeorm.JoinTable)(), _dec(_class = (_class2 = class Genre extends _base.BaseEntity {
+  constructor(...args) {
+    super(...args);
+    _initializerDefineProperty(this, "name", _descriptor, this);
+    _initializerDefineProperty(this, "games", _descriptor2, this);
+  }
+}, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "name", [_dec2], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "games", [_dec3, _dec4], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+})), _class2)) || _class);
+exports.Genre = Genre;

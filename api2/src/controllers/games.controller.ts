@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
-import { getApiInfoById, getVideogames } from './../services/game.service';
+import {
+  createNewGame,
+  getApiInfoById,
+  getVideogames
+} from './../services/game.service';
 import { handleHttp } from './../utils/error.handle';
 
 const getGame = async (req: Request, res: Response) => {
@@ -46,13 +50,17 @@ const updateGame = async (req: Request, res: Response) => {
   }
 };
 
-const createGame = async (req: Request, res: Response) => {
+const postGame = async ({ body }: Request, res: Response) => {
   try {
-    const { name, description, image, released, rating, platforms, genres } =
-      req.body;
-    const game = new Game(body);
+    const newGame = await createNewGame({ ...body });
+    res.status(201).json({
+      status: 'succes',
+      data: {
+        newGame
+      }
+    });
   } catch (err) {
-    handleHttp(res, 'Aqui un error', err);
+    handleHttp(res, 'Aqui un error en tu post', err);
   }
 };
 
@@ -63,4 +71,4 @@ const deleteGame = async (req: Request, res: Response) => {
   }
 };
 
-export { getGame, getGames, updateGame, deleteGame, createGame };
+export { getGame, getGames, updateGame, deleteGame, postGame };

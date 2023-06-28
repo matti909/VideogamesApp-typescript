@@ -8,18 +8,15 @@ import {
 
 import { IPlatform } from 'src/interfaces/game.interface';
 
-import { GamesEntity } from './games.entity';
-import { BaseEntity } from '../../src/config/base.entity';
+import { Games } from './games.entity';
+import { BaseEntity } from './../config/base.entity';
 
 @Entity({ name: 'platforms' })
 export class PlatformEntity extends BaseEntity implements IPlatform {
   @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
   name: string;
 
-  @ManyToMany(() => GamesEntity, (game) => game.platforms)
+  @ManyToMany(() => Games, (game) => game.platforms)
   @JoinTable()
-  games: GamesEntity[];
+  games: Games[];
 }

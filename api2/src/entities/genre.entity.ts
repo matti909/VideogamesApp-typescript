@@ -5,20 +5,17 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { GamesEntity } from './games.entity';
+import { Games } from './games.entity';
 
 import { IGenre } from 'src/interfaces/game.interface';
-import { BaseEntity } from '../../src/config/base.entity';
+import { BaseEntity } from './../config/base.entity';
 
 @Entity({ name: 'genres' })
-export class GenreEntity extends BaseEntity implements IGenre {
+export class Genre extends BaseEntity implements IGenre {
   @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
   name: string;
 
-  @ManyToMany(() => GamesEntity, (game) => game.genres)
+  @ManyToMany(() => Games, (game) => game.genres)
   @JoinTable()
-  games: GamesEntity[];
+  games: Games[];
 }
