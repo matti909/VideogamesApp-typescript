@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import type { IGame, IGenre, IPlatform } from 'src/interfaces/game.interface';
 import { Games } from '../entities/games.entity';
-import { AppDS } from '../ormconfig';
+import { AppDS } from '../config/ormconfig';
 
 require('dotenv').config();
 const { DOGS_API_KEY } = process.env;
@@ -23,7 +23,7 @@ const getVideogames = async (): Promise<IGame[]> => {
     return {
       id: game.id,
       name: game.name.toLowerCase(),
-      slug: game.slug,
+
       background_image: game.background_image,
       released: game.released,
       rating:
@@ -44,7 +44,7 @@ const getApiInfoById = async function (id: number) {
     const gamesData: IGame = {
       id: res.data.id,
       name: res.data.name.toLowerCase(),
-      slug: res.data.slug,
+
       description: res.data.description_raw,
       background_image: res.data.background_image,
       released: res.data.released,

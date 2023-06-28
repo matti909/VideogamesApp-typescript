@@ -6,14 +6,17 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 
-import { IPlatform } from 'src/interfaces/game.interface';
+import { IPlatform } from '../interfaces/game.interface';
 
-import { Games } from './games.entity';
+import { Games } from './../entities/games.entity';
 import { BaseEntity } from './../config/base.entity';
 
 @Entity({ name: 'platforms' })
-export class PlatformEntity extends BaseEntity implements IPlatform {
+export class Platform extends BaseEntity implements IPlatform {
   @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ name: 'name', type: 'varchar' })
   name: string;
 
   @ManyToMany(() => Games, (game) => game.platforms)

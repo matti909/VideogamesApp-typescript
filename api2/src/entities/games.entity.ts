@@ -6,8 +6,8 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 import { IGame } from '../../src/interfaces/game.interface';
-import { PlatformEntity } from './platform.entity';
-import { Genre } from './genre.entity';
+import { Platform } from './../entities/platform.entity';
+import { Genre } from './../entities/genre.entity';
 import { BaseEntity } from './../config/base.entity';
 
 @Entity({ name: 'games' })
@@ -30,9 +30,9 @@ export class Games extends BaseEntity implements IGame {
   @Column({ name: 'rating', type: 'float' })
   rating: number;
 
-  @ManyToMany(() => PlatformEntity)
+  @ManyToMany(() => Platform)
   @JoinTable()
-  platforms: PlatformEntity[];
+  platforms: Platform[];
 
   @ManyToMany(() => Genre)
   @JoinTable()
