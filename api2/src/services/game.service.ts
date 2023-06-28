@@ -4,6 +4,7 @@ import type { IGame, IGenre, IPlatform } from 'src/interfaces/game.interface';
 import axios from 'axios';
 import { GamesEntity } from 'src/entities/games.entity';
 import { AppDS } from 'src/ormconfig';
+import { DeepPartial } from 'typeorm';
 
 const getVideogames = async (): Promise<IGame[]> => {
   const apiGames: IGame[] = [];
@@ -56,8 +57,8 @@ const getApiInfoById = async function (id: number) {
   }
 };
 
-const createGame = async (body) => {
-  const game = AppDS.getRepository(GamesEntity).create(body);
+const createGame = async function (body: DeepPartial<GamesEntity>) {
+  const game = AppDS.getRepository(GamesEntity).create({ ...body });
   const results = await AppDS.getRepository(GamesEntity).save(game);
   return results;
 };

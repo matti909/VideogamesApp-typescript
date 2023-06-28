@@ -18,13 +18,6 @@ export interface IGenre {
 export interface IPlatform2 {
   platform: IPlatform;
   released_at: string;
-  requirements_en?: Requirementsen;
-  requirements_ru?: any;
-}
-
-interface Requirementsen {
-  minimum: string;
-  recommended: string;
 }
 
 export interface IPlatform {
