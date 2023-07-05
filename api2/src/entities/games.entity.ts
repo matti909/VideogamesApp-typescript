@@ -30,11 +30,11 @@ export class Games extends BaseEntity implements IGame {
   @Column({ name: 'rating', type: 'float' })
   rating: number;
 
-  @ManyToMany(() => Platform)
+  @ManyToMany(() => Platform, (platform) => platform.games) // Relación ManyToMany con Platform
   @JoinTable()
   platforms: Platform[];
 
-  @ManyToMany(() => Genre)
+  @ManyToMany(() => Genre, (genre) => genre.games) // Relación ManyToMany con Genre
   @JoinTable()
   genres: Genre[];
 }
