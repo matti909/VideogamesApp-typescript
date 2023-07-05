@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { IGame, IGenre } from "../interfaces/videogames.interface";
 import { videogames } from "../service/fetchGames";
 
@@ -16,7 +16,7 @@ interface context {
   actions: {
     toggleFavorites: (image: string) => void;
     handleLoadMore: () => void;
-    handleMoreClick: (event: any) => void;
+    handleMoreClick: (event: never) => void;
     handleNextbtn: () => void;
     handlePrevbtn: () => void;
   };
@@ -26,7 +26,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const AppStateContext = createContext({} as context);
+export const AppStateContext = createContext({} as context);
 
 export const AppStateProvider = ({ children }: Props) => {
   const [currentPage, setcurrentPage] = useState(1);
@@ -40,6 +40,7 @@ export const AppStateProvider = ({ children }: Props) => {
     setitemsPerPage(itemsPerPage + 5);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleMoreClick = (event: any) => {
     setcurrentPage(Number(event.target.id));
   };
@@ -63,6 +64,8 @@ export const AppStateProvider = ({ children }: Props) => {
   };
 
   const [favorites, setFavorites] = useState<string[]>([]);
+
+  console.log(favorites);
 
   const [allVideogames, setAllVideogames] = useState<IGame[]>([]);
 
@@ -123,8 +126,4 @@ export const AppStateProvider = ({ children }: Props) => {
       {children}
     </AppStateContext.Provider>
   );
-};
-
-export const useAppState = () => {
-  return useContext(AppStateContext);
 };

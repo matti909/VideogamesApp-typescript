@@ -13,7 +13,7 @@ export const SearchBar = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate("/search", {
-      state: name,
+      state: name.trim().toLowerCase(),
     });
     setName("");
   };

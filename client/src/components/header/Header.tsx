@@ -4,8 +4,9 @@ import styles from "./Header.module.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import Button from "../button/Button";
+import { SearchBar } from "../searchBar/SearchBar";
 
-const Header = () => {
+export const Header = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuToggler = () => setMenuOpen((prev) => !prev);
@@ -20,27 +21,29 @@ const Header = () => {
         <div>
           <span className={styles.logo}>GAME___PLAY</span>
         </div>
+
         <div>
-          <nav
-            className={`${styles.nav} ${menuOpen ? styles["nav--open"] : ""}`}
-          >
-            <Link className={styles.nav__item} to="/">
-              INICIO
-            </Link>
-            <Link className={styles.nav__item} to="/">
-              FAVORITOS
-            </Link>
-            <Link className={styles.nav__item} to="/">
-              ABOUT
-            </Link>
-            <div className={styles.mobile__button__container}>
-              <Button onClick={handleClick} />
-            </div>
-          </nav>
+          <SearchBar />
         </div>
+
         <div>
           <div className={styles.desktop__button__container}>
-            <Button onClick={handleClick} />
+            <nav
+              className={`${styles.nav} ${menuOpen ? styles["nav--open"] : ""}`}
+            >
+              <Link className={styles.nav__item} to="/">
+                INICIO
+              </Link>
+              <Link className={styles.nav__item} to="/">
+                FAVORITOS
+              </Link>
+              <Link className={styles.nav__item} to="/">
+                ABOUT
+              </Link>
+              <div className={styles.mobile__button__container}>
+                <Button onClick={handleClick} />
+              </div>
+            </nav>
           </div>
           <button className={styles.header__toggler} onClick={menuToggler}>
             {!menuOpen ? <BiMenuAltRight /> : <AiOutlineCloseSquare />}
@@ -50,5 +53,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;

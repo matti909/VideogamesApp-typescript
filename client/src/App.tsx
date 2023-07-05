@@ -1,6 +1,6 @@
-import { AppRouter } from "./AppRouter";
 import { BrowserRouter } from "react-router-dom";
-import { AppStateProvider } from "./context/AppStateContext";
+import { AppStateProvider } from "./context/AppContext";
+import { AppRouter } from "./AppRouter";
 import { Fragment } from "react";
 
 export const App = () => {
