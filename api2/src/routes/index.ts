@@ -1,13 +1,11 @@
 import 'dotenv/config';
 import { Router } from 'express';
-import { getGames, getGame } from '../controllers/games.controller';
-import { getGenre } from '../controllers/genres.controller';
+import { router as gamesRouter } from './games';
+import { router as genresRouter } from './genres';
 
 const router = Router();
 
-router.get('/games', getGames);
-router.get('/games/:id', getGame);
-
-router.get('/genres', getGenre);
+router.use('/games', gamesRouter);
+router.use('/genres', genresRouter);
 
 export { router };

@@ -107,8 +107,8 @@ export const Form = () => {
     e.preventDefault();
     console.log(games);
     const res = await gameRequest(games);
-    const data = await res.text();
-    console.log(data);
+    //const data = await res.json();
+    console.log(res);
   };
 
   return (

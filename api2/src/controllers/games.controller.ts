@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import {
   createNewGame,
   getApiInfoById,
@@ -49,18 +49,40 @@ const updateGame = async (req: Request, res: Response) => {
     handleHttp(res, 'Aqui un error');
   }
 };
-
-const postGame = async ({ body }: Request, res: Response) => {
+/*
+const createGame = async ({ body }: Request, res: Response) => {
   try {
-    const newGame = await createNewGame({ ...body });
+    const createdGame = await createNewGame(body);
+
     res.status(201).json({
-      status: 'succes',
+      status: 'success',
       data: {
-        newGame
+        game: createdGame
       }
     });
   } catch (err) {
-    handleHttp(res, 'Aqui un error en tu post', err);
+    handleHttp(res, 'Aquí ocurrió un error en POST', err);
+  }
+};*/
+
+const createGame = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const post = await createNewGame(req.body);
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        post
+      }
+    });
+  } catch (err: any) {
+    if (err.code === '23505') {
+      return res.status(409).json({
+        status: 'fail',
+        message: 'Post with that title already exist'
+      });
+    }
+    next(err);
   }
 };
 
@@ -71,4 +93,4 @@ const deleteGame = async (req: Request, res: Response) => {
   }
 };
 
-export { getGame, getGames, updateGame, deleteGame, postGame };
+export { getGame, getGames, updateGame, deleteGame, createGame };
