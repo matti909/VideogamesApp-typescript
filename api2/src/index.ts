@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 5002;
 async function boostrap() {
   try {
     await AppDS.initialize();
-    console.log('Database connected!');
+    console.log('Database connected on port:!', process.env.P);
+
     app.listen(PORT, () => {
       console.log('Server running OK!!');
     });

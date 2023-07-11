@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import express from 'express';
+import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -11,7 +11,7 @@ import { router } from './routes';
 
 require('dotenv').config();
 
-const app = express();
+const app: Application = express();
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
