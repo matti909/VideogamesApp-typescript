@@ -1,7 +1,8 @@
-import { Form, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { Search } from "./pages/search/Search";
 import { Detail } from "./pages/detail/Detail";
+import { Form } from "./pages/form/Form";
 
 export const AppRouter = () => {
   return (
