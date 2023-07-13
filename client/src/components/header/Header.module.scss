@@ -1,9 +1,8 @@
 @import "./../../styles/index.scss";
-
 .header {
   height: $header-height;
-  background: $bg2;
-  color: $text;
+  background-color: #333;
+  color: $text2;
   position: fixed;
   z-index: 1000;
   width: 100%;
@@ -62,68 +61,23 @@
       font-size: 32px;
     }
   }
-  @include min-width(medium) {
-    &__content {
-      padding: 0;
-      transition: padding 0.5s ease, transform 0.5s ease;
-      transform: translateX(0%);
 
-      &.menu-open {
-        padding-right: $spacing-lg;
-        transform: translateX(-100%);
-      }
-    }
+  &__content {
+    padding: 0;
+    transition: padding 0.5s ease, transform 0.5s ease;
+    transform: translateX(0%);
 
-    .mobile__button__container {
-      display: none;
-    }
-  }
-}
-
-.logo {
-  font-size: 26px;
-  font-weight: 700;
-  color: $text2;
-}
-
-.nav {
-  width: 100%;
-  position: fixed;
-  top: $header-height;
-  right: -100%;
-  background: rgba($bg2, 0.8);
-  text-align: center;
-  padding: $spacing-md 0;
-
-  &--open {
-    transition: 0.2s ease right;
-    right: 0;
-  }
-
-  &__item {
-    display: block;
-    padding: $spacing-md;
-
-    text-decoration: none;
-    color: inherit;
-
-    height: 100%;
-
-    transition: 0.3s ease color;
-
-    @include min-width(medium) {
-      padding: 0 $spacing-lg;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    &:hover {
-      color: $primary;
+    &.nav--open {
+      padding-right: $spacing-lg;
+      transform: translateX(-100%);
     }
   }
 
-  @include min-width(medium) {
+  .mobile__button__container {
+    display: none;
+  }
+
+  .nav {
     position: static;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -137,7 +91,58 @@
       justify-content: flex-end;
       padding: $spacing-md;
     }
+
+    &__item {
+      display: block;
+      padding: $spacing-md;
+      text-decoration: none;
+      color: inherit;
+      height: 100%;
+      transition: 0.3s ease color;
+      position: relative;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: $primary;
+        transition: width 0.3s ease;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+
+      &:hover::before,
+      &:hover::after {
+        width: 100%;
+      }
+
+      @include min-width(medium) {
+        padding: 0 $spacing-lg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:hover {
+        color: $primary;
+      }
+    }
   }
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
 }
 
 .button {
