@@ -2,11 +2,10 @@
 
 .containerfilter {
   display: flex;
-  position: fixed;
-  top: $header-height;
-
-  left: 0;
-  background: rgba(9, 9, 9, 0);
+  position: absolute;
+  top: 75px;
+  left: 39px;
+  background-color: rgba(9, 9, 9, 0);
   text-align: center;
   padding: $spacing-md 0;
 
@@ -14,6 +13,8 @@
     padding: 0 $spacing-lg;
     align-items: center;
     justify-content: center;
+    border-radius: 100px;
+    left: 39px;
 
     &__content {
       padding: 0;
@@ -38,19 +39,17 @@
 
     @include min-width(medium) {
       display: block;
+      background-color: transparent;
+      color: white;
+      border: none;
     }
 
     & > svg {
       display: initial;
       font-size: 32px;
-      &:active {
-        transform: scale(0.98);
-        border-radius: 0;
-        background-color: aqua;
-      }
 
       &:hover {
-        background-color: aqua;
+        transform: scale(0.98);
         box-shadow: 0, 0, 0.75, 0 $primary;
       }
     }
@@ -58,17 +57,17 @@
 
   .filter-by-type {
     z-index: 100;
+    background-color: transparent;
 
     span {
-      margin-bottom: $spacing-sm;
+      position: absolute;
+      top: 1em;
     }
 
     .type-options {
       display: none;
       @include min-width(medium) {
         display: block;
-        flex-wrap: wrap;
-        justify-content: center;
         padding: 0 $spacing-lg;
         margin-top: $spacing-md;
       }

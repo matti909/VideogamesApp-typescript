@@ -57,41 +57,38 @@ export const Pagination = ({ matches }: Props) => {
   }
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <section style={{ flex: 1 }}>
         <h1>VIDEOGAMES APP </h1>
-
-        <header>
-          <ul className={styles.pageNumbers}>
-            <li>
-              <button
-                onClick={handlePrevbtn}
-                disabled={currentPage === pages[0] ? true : false}
-              >
-                Prev
-              </button>
-            </li>
-
-            {pageDecrementBtn}
-            {renderPageNumbers}
-            {pageIncrementBtn}
-
-            <li>
-              <button
-                onClick={handleNextbtn}
-                disabled={
-                  currentPage === pages[pages.length - 1] ? true : false
-                }
-              >
-                Next
-              </button>
-            </li>
-          </ul>
-        </header>
 
         <ListOfGame games={currentItems} />
         <button onClick={handleLoadMore}>Load More</button>
       </section>
+      <footer className={styles.footerin}>
+        <ul className={styles.pageNumbers}>
+          <li>
+            <button
+              onClick={handlePrevbtn}
+              disabled={currentPage === pages[0] ? true : false}
+            >
+              Prev
+            </button>
+          </li>
+
+          {pageDecrementBtn}
+          {renderPageNumbers}
+          {pageIncrementBtn}
+
+          <li>
+            <button
+              onClick={handleNextbtn}
+              disabled={currentPage === pages[pages.length - 1] ? true : false}
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </footer>
     </div>
   );
 };

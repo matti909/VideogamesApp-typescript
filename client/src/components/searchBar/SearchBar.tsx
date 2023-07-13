@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { IoSearch } from "react-icons/io5";
 import styles from "./SearchBar.module.scss";
 
 export const SearchBar = () => {
@@ -23,6 +24,7 @@ export const SearchBar = () => {
       <form onSubmit={handleSubmit} style={{ display: "flex" }}>
         <div className={styles.inputt}>
           <input
+            className={styles.inputt__in}
             type="search"
             name="valueSearch"
             id=""
@@ -30,9 +32,12 @@ export const SearchBar = () => {
             onChange={handleChange}
             placeholder="Buscar nombre ..."
           />
+          <div className={styles.inputt__iconContainer}>
+            <IoSearch className={styles.inputt__icon} />
+          </div>
         </div>
 
-        <button className="btn-search">Buscar</button>
+        <button className={styles.inputt__button}>Buscar</button>
       </form>
     </div>
   );

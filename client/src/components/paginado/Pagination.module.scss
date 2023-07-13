@@ -1,5 +1,12 @@
 @import "./../../styles/index.scss";
 
+.footerin {
+  display: none;
+  @include min-width(small) {
+    display: initial;
+  }
+}
+
 .pageNumbers {
   list-style: none;
   display: flex;
