@@ -57,10 +57,8 @@ export const Pagination = ({ matches }: Props) => {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div style={{ display: "flex", flexDirection: "column", padding: "35px" }}>
       <section style={{ flex: 1 }}>
-        <h1>VIDEOGAMES APP </h1>
-
         <ListOfGame games={currentItems} />
         <button onClick={handleLoadMore}>Load More</button>
       </section>
