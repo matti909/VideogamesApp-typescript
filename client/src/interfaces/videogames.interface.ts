@@ -2,7 +2,7 @@ export interface IGame {
   id: number;
   slug?: string;
   name: string;
-  description: string;
+  description?: string;
   released?: string;
   background_image?: string;
   rating: number;
