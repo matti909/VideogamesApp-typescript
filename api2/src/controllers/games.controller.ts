@@ -49,21 +49,6 @@ const updateGame = async (req: Request, res: Response) => {
     handleHttp(res, 'Aqui un error');
   }
 };
-/*
-const createGame = async ({ body }: Request, res: Response) => {
-  try {
-    const createdGame = await createNewGame(body);
-
-    res.status(201).json({
-      status: 'success',
-      data: {
-        game: createdGame
-      }
-    });
-  } catch (err) {
-    handleHttp(res, 'Aquí ocurrió un error en POST', err);
-  }
-};*/
 
 const createGame = async (req: Request, res: Response, next: NextFunction) => {
   try {

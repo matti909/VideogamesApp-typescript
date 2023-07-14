@@ -1,8 +1,8 @@
-import { IGame, IGenre } from 'src/interfaces/game.interface';
+import { IGenre } from 'src/interfaces/game.interface';
 
 require('dotenv').config();
-const axios = require('axios');
-const { DOGS_API_KEY } = process.env;
+import axios from 'axios';
+const DOGS_API_KEY = 'd64cc61c647b428dafe6d53ec066bc62';
 
 const getGenres = async function () {
   let genresData: IGenre[] = [];

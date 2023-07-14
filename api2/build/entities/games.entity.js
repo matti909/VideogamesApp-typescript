@@ -5,8 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Games = void 0;
 var _typeorm = require("typeorm");
-var _platform = require("./platform.entity");
-var _genre = require("./genre.entity");
+var _platform = require("./../entities/platform.entity");
+var _genre = require("./../entities/genre.entity");
 var _base = require("./../config/base.entity");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -29,7 +29,7 @@ let Games = (_dec = (0, _typeorm.Entity)({
 }), _dec7 = (0, _typeorm.Column)({
   name: 'rating',
   type: 'float'
-}), _dec8 = (0, _typeorm.ManyToMany)(() => _platform.PlatformEntity), _dec9 = (0, _typeorm.JoinTable)(), _dec10 = (0, _typeorm.ManyToMany)(() => _genre.Genre), _dec11 = (0, _typeorm.JoinTable)(), _dec(_class = (_class2 = class Games extends _base.BaseEntity {
+}), _dec8 = (0, _typeorm.ManyToMany)(() => _platform.Platform, platform => platform.games), _dec9 = (0, _typeorm.JoinTable)(), _dec10 = (0, _typeorm.ManyToMany)(() => _genre.Genre, genre => genre.games), _dec11 = (0, _typeorm.JoinTable)(), _dec(_class = (_class2 = class Games extends _base.BaseEntity {
   constructor(...args) {
     super(...args);
     _initializerDefineProperty(this, "id", _descriptor, this);

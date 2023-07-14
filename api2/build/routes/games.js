@@ -10,4 +10,4 @@ const router = (0, _express.Router)();
 exports.router = router;
 router.get('/', _games.getGames);
 router.get('/:id', _games.getGame);
-router.post('/post', _games.postGame);
+router.post('/', _games.createGame);

@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.app = void 0;
 require("reflect-metadata");
 var _express = _interopRequireDefault(require("express"));
-var _morgan = _interopRequireDefault(require("morgan"));
 var _cors = _interopRequireDefault(require("cors"));
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 var _cookieParser = _interopRequireDefault(require("cookie-parser"));
@@ -17,7 +16,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 require('dotenv').config();
 const app = (0, _express.default)();
 exports.app = app;
-app.use((0, _morgan.default)('dev'));
 app.use(_bodyParser.default.urlencoded({
   extended: true,
   limit: '50mb'

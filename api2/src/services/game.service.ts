@@ -4,7 +4,7 @@ import { AppDS } from '../config/ormconfig';
 import type { IGame, IGenre, IPlatform } from '../interfaces/game.interface';
 
 require('dotenv').config();
-const { DOGS_API_KEY } = process.env;
+const DOGS_API_KEY = 'd64cc61c647b428dafe6d53ec066bc62';
 
 const getVideogames = async (): Promise<IGame[]> => {
   const apiGames: IGame[] = [];

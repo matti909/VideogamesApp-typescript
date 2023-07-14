@@ -4,12 +4,12 @@ import { app } from './app';
 import { AppDS } from './config/ormconfig';
 
 require('dotenv').config();
-const PORT = process.env.PORT || 5002;
+const PORT = 4002;
 
 async function boostrap() {
   try {
     await AppDS.initialize();
-    console.log('Database connected on port:!', process.env.P);
+    console.log('Database connected on port:!', process.env.PORT);
 
     app.listen(PORT, () => {
       console.log('Server running OK!!');

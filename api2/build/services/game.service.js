@@ -6,12 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.getVideogames = exports.getApiInfoById = exports.createNewGame = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 var _games = require("../entities/games.entity");
-var _ormconfig = require("../ormconfig");
+var _ormconfig = require("../config/ormconfig");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 require('dotenv').config();
-const {
-  DOGS_API_KEY
-} = process.env;
+const DOGS_API_KEY = 'd64cc61c647b428dafe6d53ec066bc62';
 const getVideogames = async () => {
   const apiGames = [];
   for (let i = 1; i <= 5; i++) {
@@ -23,7 +21,6 @@ const getVideogames = async () => {
     return {
       id: game.id,
       name: game.name.toLowerCase(),
-      slug: game.slug,
       background_image: game.background_image,
       released: game.released,
       rating: game.rating !== undefined ? parseFloat(game.rating.toFixed(2)) : 0,
@@ -40,7 +37,6 @@ const getApiInfoById = async function (id) {
     const gamesData = {
       id: res.data.id,
       name: res.data.name.toLowerCase(),
-      slug: res.data.slug,
       description: res.data.description_raw,
       background_image: res.data.background_image,
       released: res.data.released,
@@ -60,11 +56,4 @@ const createNewGame = async body => {
     ...body
   }));
 };
-
-/*
-const createNewGame = async function (body: DeepPartial<Games>, game: Games) {
-  const res = AppDS.getRepository(Games).create({ ...body });
-  return await AppDS.getRepository(Games).save(res);
-};
-*/
 exports.createNewGame = createNewGame;

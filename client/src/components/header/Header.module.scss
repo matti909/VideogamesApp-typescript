@@ -114,10 +114,12 @@
       }
 
       &::before {
+        top: 0;
         left: 0;
       }
 
       &::after {
+        bottom: 0;
         right: 0;
       }
 
@@ -144,7 +146,7 @@
   font-size: 26px;
   font-weight: 700;
   color: white;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .button {

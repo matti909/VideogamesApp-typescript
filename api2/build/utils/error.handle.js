@@ -5,8 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.handleHttp = void 0;
 const handleHttp = (res, error, errorRaw) => {
-  res.status(500);
-  res.send({
+  res.status(500).json({
     error
   });
 };

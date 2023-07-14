@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateGame = exports.postGame = exports.getGames = exports.getGame = exports.deleteGame = void 0;
+exports.updateGame = exports.getGames = exports.getGame = exports.deleteGame = exports.createGame = void 0;
 var _game = require("./../services/game.service");
 var _error = require("./../utils/error.handle");
 const getGame = async (req, res) => {
@@ -55,24 +55,26 @@ const updateGame = async (req, res) => {
   }
 };
 exports.updateGame = updateGame;
-const postGame = async ({
-  body
-}, res) => {
+const createGame = async (req, res, next) => {
   try {
-    const newGame = await (0, _game.createNewGame)({
-      ...body
-    });
+    const post = await (0, _game.createNewGame)(req.body);
     res.status(201).json({
-      status: 'succes',
+      status: 'success',
       data: {
-        newGame
+        post
       }
     });
   } catch (err) {
-    (0, _error.handleHttp)(res, 'Aqui un error en tu post', err);
+    if (err.code === '23505') {
+      return res.status(409).json({
+        status: 'fail',
+        message: 'Post with that title already exist'
+      });
+    }
+    next(err);
   }
 };
-exports.postGame = postGame;
+exports.createGame = createGame;
 const deleteGame = async (req, res) => {
   try {} catch (err) {
     (0, _error.handleHttp)(res, 'Aqui un error');

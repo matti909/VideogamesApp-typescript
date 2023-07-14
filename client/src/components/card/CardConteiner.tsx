@@ -2,9 +2,11 @@ import React from "react";
 import styles from "./CardConteiner.module.scss";
 import { IGame } from "../../interfaces/videogames.interface";
 import { useAppState } from "../../context/useAppState";
+import { Link } from "react-router-dom";
 
 export const CardConteiner: React.FC<IGame> = ({
   name,
+  id,
   background_image,
   genres,
   rating,
@@ -45,7 +47,13 @@ export const CardConteiner: React.FC<IGame> = ({
           {isFavorites ? "★" : "☆"}
         </button>
       </div>
-      <div>
+      <Link
+        style={{
+          color: "initial",
+          textDecoration: "none",
+        }}
+        to={`/detail/${id}`}
+      >
         <h2>
           <p>{name.toUpperCase()}</p>
         </h2>
@@ -56,7 +64,7 @@ export const CardConteiner: React.FC<IGame> = ({
             {"★".repeat(rating).padEnd(5, "☆")}
           </span>
         </p>
-      </div>
+      </Link>
     </div>
   );
 };
