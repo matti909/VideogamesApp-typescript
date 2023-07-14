@@ -31,7 +31,11 @@ export const Header = () => {
             <nav
               className={`${styles.nav} ${menuOpen ? styles["nav--open"] : ""}`}
             >
-              <Link className={styles.nav__item} to="/">
+              <Link
+                style={{ padding: "8px" }}
+                className={styles.nav__item}
+                to="/"
+              >
                 INICIO
               </Link>
               <Link className={styles.nav__item} to="/">

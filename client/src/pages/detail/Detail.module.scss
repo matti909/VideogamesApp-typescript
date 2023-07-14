@@ -1,0 +1,28 @@
+.detailContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+
+  .detailImage {
+    width: 420px;
+    height: 400px;
+    object-fit: cover;
+    display: flex;
+    border-radius: 10px;
+  }
+}
+
+.detailSection {
+  margin: 10px;
+
+  &__name {
+    color: blue;
+    margin-bottom: 20px;
+  }
+
+  &__des {
+    bottom: 10px;
+  }
+}

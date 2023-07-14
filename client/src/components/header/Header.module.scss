@@ -125,7 +125,7 @@
 
       &:hover::before,
       &:hover::after {
-        width: 100%;
+        width: 45%;
       }
 
       @include min-width(medium) {
