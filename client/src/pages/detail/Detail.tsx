@@ -34,6 +34,13 @@ export const Detail = () => {
       <div className={style.detailSection}>
         <h1 className={style.detailSection__name}>{game?.name}</h1>
         <p className={style.detailSection__des}> {game?.description}</p>
+        <br />
+        <p style={{ fontSize: "30px" }}>
+          Rating:{" "}
+          <span className={style.ratingStars}>
+            {"★".repeat(game?.rating).padEnd(5, "☆")}
+          </span>
+        </p>
       </div>
     </div>
   );

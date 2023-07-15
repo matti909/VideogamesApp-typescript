@@ -1,9 +1,9 @@
 .detailContainer {
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
+  align-items: start;
   justify-content: center;
-  text-align: center;
-  margin-top: 20px;
+  text-align: left;
 
   .detailImage {
     width: 420px;
@@ -15,14 +15,18 @@
 }
 
 .detailSection {
-  margin: 10px;
+  margin: 20px;
 
   &__name {
-    color: blue;
+    color: rgba(2, 2, 226, 0.8);
     margin-bottom: 20px;
   }
 
-  &__des {
-    bottom: 10px;
+  &__des > p {
+    overflow-x: scroll;
   }
+}
+
+.ratingStars {
+  color: #ffb300;
 }
