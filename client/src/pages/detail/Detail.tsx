@@ -22,6 +22,9 @@ export const Detail = () => {
 
   console.log(game);
 
+  const ratingStars =
+    game?.rating !== undefined ? "★".repeat(game.rating).padEnd(5, "☆") : "";
+
   return (
     <div className={style.detailContainer}>
       <picture className={style.detailSection}>
@@ -36,10 +39,7 @@ export const Detail = () => {
         <p className={style.detailSection__des}> {game?.description}</p>
         <br />
         <p style={{ fontSize: "30px" }}>
-          Rating:{" "}
-          <span className={style.ratingStars}>
-            {"★".repeat(game?.rating).padEnd(5, "☆")}
-          </span>
+          Rating: <span className={style.ratingStars}>{ratingStars}</span>
         </p>
       </div>
     </div>
