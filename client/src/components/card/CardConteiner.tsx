@@ -9,9 +9,8 @@ export const CardConteiner: React.FC<IGame> = ({
   id,
   background_image,
   genres,
-  rating,
 }) => {
-  const genre = genres.map((e) => e);
+  const genres2 = genres.map((e) => e);
 
   const { actions, state } = useAppState();
   const { toggleFavorites } = actions;
@@ -57,14 +56,20 @@ export const CardConteiner: React.FC<IGame> = ({
         <h2>
           <p>{name.toUpperCase()}</p>
         </h2>
-        {<p>Generos: {genre.join(", ")}</p>}
-        <p>
-          Rating:{" "}
-          <span className={styles.ratingStars}>
-            {"★".repeat(rating).padEnd(5, "☆")}
-          </span>
-        </p>
+        <div className={styles.carType}>
+          {genres2.map((genre) => (
+            <span
+              key={genre.toString()}
+              className={`${styles.genre} ${styles[genre.toString()]} ${
+                genre === "role-playing-games-rpg" ? styles.truncated : ""
+              }`}
+            >
+              {genre.toString()}
+            </span>
+          ))}
+        </div>
       </Link>
     </div>
   );
+  /*{<p>Generos: {genre.join(", ")}</p>}*/
 };

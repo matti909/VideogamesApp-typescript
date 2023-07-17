@@ -46,4 +46,47 @@
   .ratingStars {
     color: #ffb300;
   }
+
+  .carType {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .card-types span {
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  .genre {
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+
+  .action {
+    background-color: red;
+  }
+
+  .adventure {
+    background-color: green;
+  }
+
+  .puzzle {
+    background-color: blue;
+  }
+
+  .shooter {
+    background-color: cadetblue;
+  }
+
+  .role-playing-games-rpg {
+    background-color: #ff9800;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

@@ -54,7 +54,7 @@ export const CategoryFilter = ({ games, onChange }: Props) => {
           onClick={menuToggler}
         >
           {!active ? <BiMenuAltRight /> : <AiOutlineCloseSquare />}{" "}
-          <span>filtros</span>
+          <span style={{ fontSize: "12px" }}>Filtros</span>
         </button>
         {active && (
           <div className={styles["type-options"]}>
