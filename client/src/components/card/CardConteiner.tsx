@@ -57,12 +57,10 @@ export const CardConteiner: React.FC<IGame> = ({
           <p>{name.toUpperCase()}</p>
         </h2>
         <div className={styles.carType}>
-          {genres2.map((genre) => (
+          {genres2.slice(0, 3).map((genre) => (
             <span
               key={genre.toString()}
-              className={`${styles.genre} ${styles[genre.toString()]} ${
-                genre === "role-playing-games-rpg" ? styles.truncated : ""
-              }`}
+              className={`${styles.genre} ${styles[genre.toString()]}`}
             >
               {genre.toString()}
             </span>

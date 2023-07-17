@@ -81,6 +81,18 @@
   .shooter {
     background-color: cadetblue;
   }
+  .platformer {
+    background-color: #f80d67;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .indie {
+    background-color: #0a0600;
+    color: #fafafa;
+  }
 
   .role-playing-games-rpg {
     background-color: #ff9800;

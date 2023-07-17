@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { Header } from "../../components/header/Header";
 import { Pagination } from "../../components/paginado/Pagination";
 import { Filter } from "../../interfaces/videogames.interface";
 import { CategoryFilter } from "../../components/categoryFilter/CategoryFilter";
