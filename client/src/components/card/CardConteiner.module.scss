@@ -48,13 +48,14 @@
   }
 
   .carType {
+    font-size: small;
+    font-weight: 490;
     display: flex;
     gap: 10px;
     margin-top: 10px;
   }
 
   .card-types span {
-    font-size: 12px;
     padding: 5px;
     border-radius: 5px;
     color: #fff;
@@ -100,5 +101,50 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .massively-multiplayer {
+    background-color: #310202;
+    color: #fafafa;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .racing {
+    color: #050505;
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 1),
+      rgba(255, 255, 255, 2)
+    );
+  }
+
+  .arcade {
+    color: rgb(63, 240, 47);
+    background-image: linear-gradient(to bottom, black 50%, transparent 50%),
+      linear-gradient(to right, black 50%, transparent 50%);
+    background-size: 2px 2px;
+  }
+
+  .simulation {
+    color: rgb(10, 10, 10);
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgb(194, 56, 56),
+      rgb(22, 235, 22) 5px,
+      white 5px,
+      white 10px
+    );
+  }
+
+  .fighting {
+    background-image: linear-gradient(
+      to bottom right,
+      #ffd700 50%,
+      #ff8c00 50%
+    );
+    color: #333333;
   }
 }

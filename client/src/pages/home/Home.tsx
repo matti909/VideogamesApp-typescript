@@ -14,12 +14,10 @@ export const Home = () => {
   });
 
   const matches = useMemo(() => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const filterToApply = Object.values(filters).filter(Boolean!);
     let matches = allVideogames;
 
     for (const filter of filterToApply) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       matches = matches.filter((el) => el.genres.some(filter!));
     }
     return matches;

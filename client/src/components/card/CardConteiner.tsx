@@ -62,7 +62,7 @@ export const CardConteiner: React.FC<IGame> = ({
               key={genre.toString()}
               className={`${styles.genre} ${styles[genre.toString()]}`}
             >
-              {genre.toString()}
+              {genre.toString().toUpperCase()}
             </span>
           ))}
         </div>
