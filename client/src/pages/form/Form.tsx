@@ -1,7 +1,10 @@
 import { FormEvent, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import style from "./Form.module.scss";
 import { Select, SelectOptions } from "../../components/select/Select";
 import { gameRequest } from "./Post";
+import { useNavigate } from "react-router-dom";
 
 const options = [
   {
@@ -88,27 +91,41 @@ type Genre = {
 
 export type Game = {
   name: string;
-  released: string;
+  background_image: string;
   description: string;
+  released: string;
+  rating: number;
   genres: Genre[];
 };
 
 export const Form = () => {
   const [games, setGame] = useState<Game>({
     name: "",
+    background_image: "",
     released: "",
     description: "",
+    rating: 0,
     genres: [],
   });
+
+  const navigate = useNavigate();
 
   const [value1, setValue1] = useState<SelectOptions[]>([options[0]]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(games);
-    const res = await gameRequest(games);
-    //const data = await res.json();
+    const gameWithGenres: Game = {
+      ...games,
+      genres: value1.map((genre) => ({ name: genre.name })),
+    };
+    console.log(gameWithGenres);
+    const res = await gameRequest(gameWithGenres);
     console.log(res);
+
+    if (res.status === "success") {
+      navigate("/");
+      toast.success("El juego se ha guardado correctamente");
+    }
   };
 
   return (
@@ -126,6 +143,39 @@ export const Form = () => {
             onChange={(e) => setGame({ ...games, name: e.target.value })}
           />
         </div>
+
+        <div>
+          <label htmlFor="background_image">Imagen de fondo: </label>
+          <input
+            className={style.pimpum}
+            required
+            type="text"
+            id="background_image"
+            placeholder="Ingresa la URL de la imagen"
+            value={games.background_image}
+            onChange={(e) =>
+              setGame({ ...games, background_image: e.target.value })
+            }
+          />
+        </div>
+
+        <div>
+          <label htmlFor="rating">Rating: </label>
+          <input
+            className={style.pimpum}
+            required
+            type="number"
+            id="rating"
+            max={5}
+            min={0}
+            step="0.1"
+            value={games.rating}
+            onChange={(e) =>
+              setGame({ ...games, rating: parseFloat(e.target.value) })
+            }
+          />
+        </div>
+
         <div>
           <label htmlFor="released">Your released</label>
           <input

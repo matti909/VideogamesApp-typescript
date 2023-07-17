@@ -5,17 +5,22 @@ import { Detail } from "./pages/detail/Detail";
 import { Form } from "./pages/form/Form";
 import { RouterLayout } from "./RouterLayout";
 import { Favorites } from "./pages/favorites/Favorites";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AppRouter = () => {
   return (
-    <Routes>
-      <Route path="/" element={<RouterLayout />}>
-        <Route path="/" element={<Home />} />
+    <div>
+      <ToastContainer />
+      <Routes>
+        <Route path="/" element={<RouterLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/detail/:id" element={<Detail />} />
+        </Route>
         <Route path="/form" element={<Form />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/detail/:id" element={<Detail />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </div>
   );
 };
