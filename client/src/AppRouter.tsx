@@ -11,7 +11,18 @@ import "react-toastify/dist/ReactToastify.css";
 export const AppRouter = () => {
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <Routes>
         <Route path="/" element={<RouterLayout />}>
           <Route path="/" element={<Home />} />

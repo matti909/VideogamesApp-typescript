@@ -112,6 +112,19 @@ export const Form = () => {
 
   const [value1, setValue1] = useState<SelectOptions[]>([options[0]]);
 
+  const notify = () => {
+    toast.success("successful!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const gameWithGenres: Game = {
@@ -222,7 +235,9 @@ export const Form = () => {
         </button>
 
         <div>
-          <button type="submit">Submit</button>
+          <button onClick={notify} type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </div>
