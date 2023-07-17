@@ -1,9 +1,7 @@
-import React from "react";
 import { ListOfGame } from "../../components/listOfGame/ListOfGame";
 import { useAppState } from "../../context/useAppState";
-import { IGame } from "../../interfaces/videogames.interface";
 
-export const Favorites: React.FC<IGame> = () => {
+export const Favorites = () => {
   const { state } = useAppState();
   const { favorites } = state;
 
