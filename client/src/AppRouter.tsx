@@ -3,14 +3,17 @@ import { Home } from "./pages/home/Home";
 import { Search } from "./pages/search/Search";
 import { Detail } from "./pages/detail/Detail";
 import { Form } from "./pages/form/Form";
+import { RouterLayout } from "./RouterLayout";
 
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/form" element={<Form />} />
-      <Route path="/search/" element={<Search />} />
-      <Route path="/detail/:id" element={<Detail />} />
+      <Route path="/" element={<RouterLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/search/" element={<Search />} />
+        <Route path="/detail/:id" element={<Detail />} />
+      </Route>
     </Routes>
   );
 };

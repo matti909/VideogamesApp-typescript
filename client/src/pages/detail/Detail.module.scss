@@ -18,12 +18,12 @@
   margin: 20px;
 
   &__name {
-    color: rgba(2, 2, 226, 0.8);
+    color: rgba(14, 175, 27, 0.8);
     margin-bottom: 20px;
   }
 
-  &__des > p {
-    overflow-x: scroll;
+  &__des {
+    overflow-y: scroll;
   }
 }
 

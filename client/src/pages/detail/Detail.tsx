@@ -13,7 +13,7 @@ export const Detail = () => {
       .getById({ id: parseInt(id!) })
       .then((r) => setGame(r.data))
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
     return () => {
       setGame(null);
@@ -26,13 +26,16 @@ export const Detail = () => {
     game?.rating !== undefined ? "★".repeat(game.rating).padEnd(5, "☆") : "";
 
   return (
-    <div className={style.detailContainer}>
+    <div style={{ paddingTop: "100px" }} className={style.detailContainer}>
       <picture className={style.detailSection}>
         <img
           className={style.detailImage}
           src={game?.background_image}
           alt="null"
         />
+        <span>
+          <p>Released:</p> {game?.released}
+        </span>
       </picture>
       <div className={style.detailSection}>
         <h1 className={style.detailSection__name}>{game?.name}</h1>

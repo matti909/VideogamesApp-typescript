@@ -28,10 +28,6 @@ export const Home = () => {
 
   return (
     <>
-      <header>
-        <Header />
-      </header>
-
       <aside style={{ minWidth: "6em" }}>
         <CategoryFilter
           games={allVideogames}
