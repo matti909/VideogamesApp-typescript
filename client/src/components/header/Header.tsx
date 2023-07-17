@@ -1,19 +1,13 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
-import Button from "../button/Button";
 import { SearchBar } from "../searchBar/SearchBar";
 
 export const Header = () => {
-  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuToggler = () => setMenuOpen((prev) => !prev);
-
-  const handleClick = () => {
-    navigate("/form", {});
-  };
 
   return (
     <div className={styles.header}>
@@ -38,15 +32,12 @@ export const Header = () => {
               >
                 INICIO
               </Link>
-              <Link className={styles.nav__item} to="/">
+              <Link className={styles.nav__item} to="/favorites">
                 FAVORITOS
               </Link>
-              <Link className={styles.nav__item} to="/">
-                ABOUT
+              <Link className={styles.nav__item} to="/form">
+                CREAR
               </Link>
-              <div className={styles.mobile__button__container}>
-                <Button onClick={handleClick} />
-              </div>
             </nav>
           </div>
           <button className={styles.header__toggler} onClick={menuToggler}>

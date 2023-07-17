@@ -4,31 +4,24 @@ import { IGame } from "../../interfaces/videogames.interface";
 import { useAppState } from "../../context/useAppState";
 import { Link } from "react-router-dom";
 
-export const CardConteiner: React.FC<IGame> = ({
-  name,
-  id,
-  background_image,
-  genres,
-}) => {
-  const genres2 = genres.map((e) => e);
-
+export const CardConteiner: React.FC<IGame> = (game) => {
   const { actions, state } = useAppState();
   const { toggleFavorites } = actions;
   const { favorites } = state;
 
-  const isFavorites = favorites.includes(name);
+  const isFavorites = favorites.some((favorite) => favorite.id === game.id);
 
   return (
     <div className={styles.cardContainer}>
       <div style={{ position: "relative" }}>
         <img
           style={{ objectFit: "cover" }}
-          src={background_image}
+          src={game.background_image}
           alt="unknown"
           loading="lazy"
         />
         <button
-          onClick={() => toggleFavorites(name)}
+          onClick={() => toggleFavorites(game)}
           className={`${isFavorites ? styles.favoriteButton : ""}`}
           style={{
             position: "absolute",
@@ -51,13 +44,13 @@ export const CardConteiner: React.FC<IGame> = ({
           color: "initial",
           textDecoration: "none",
         }}
-        to={`/detail/${id}`}
+        to={`/detail/${game.id}`}
       >
         <h2>
-          <p>{name.toUpperCase()}</p>
+          <p>{game.name.toUpperCase()}</p>
         </h2>
         <div className={styles.carType}>
-          {genres2.slice(0, 3).map((genre) => (
+          {game.genres.slice(0, 3).map((genre) => (
             <span
               key={genre.toString()}
               className={`${styles.genre} ${styles[genre.toString()]}`}
@@ -69,5 +62,4 @@ export const CardConteiner: React.FC<IGame> = ({
       </Link>
     </div>
   );
-  /*{<p>Generos: {genre.join(", ")}</p>}*/
 };

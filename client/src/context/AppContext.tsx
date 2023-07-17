@@ -4,7 +4,7 @@ import { videogames } from "../service/fetchGames";
 
 interface context {
   state: {
-    favorites: string[];
+    favorites: IGame[];
     allVideogames: IGame[];
     genres: IGenre[];
     currentPage: number;
@@ -14,7 +14,7 @@ interface context {
     minPageNumberLimit: number;
   };
   actions: {
-    toggleFavorites: (image: string) => void;
+    toggleFavorites: (arg0: IGame) => void;
     handleLoadMore: () => void;
     handleMoreClick: (event: never) => void;
     handleNextbtn: () => void;
@@ -63,10 +63,6 @@ export const AppStateProvider = ({ children }: Props) => {
     }
   };
 
-  const [favorites, setFavorites] = useState<string[]>([]);
-
-  console.log(favorites);
-
   const [allVideogames, setAllVideogames] = useState<IGame[]>([]);
 
   useEffect(() => {
@@ -93,11 +89,16 @@ export const AppStateProvider = ({ children }: Props) => {
       });
   }, []);
 
-  function toggleFavorites(image: string) {
-    if (favorites.includes(image)) {
-      setFavorites(() => favorites.filter((favorite) => favorite !== image));
+  const [favorites, setFavorites] = useState<IGame[]>([]);
+
+  console.log(favorites);
+
+  function toggleFavorites(game: IGame) {
+    const isFavorite = favorites.some((favorite) => favorite.id === game.id);
+    if (isFavorite) {
+      setFavorites(favorites.filter((favorite) => favorite.id !== game.id));
     } else {
-      setFavorites((favorites) => [...favorites, image]);
+      setFavorites([...favorites, game]);
     }
   }
 
