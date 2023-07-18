@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Pagination } from "../../components/paginado/Pagination";
 import { Filter } from "../../interfaces/videogames.interface";
-import { CategoryFilter } from "../../components/categoryFilter/CategoryFilter";
+import CategoryFilter from "../../components/categoryFilter/CategoryFilter";
 import { useAppState } from "../../context/useAppState";
 import { ToastContainer } from "react-toastify";
 

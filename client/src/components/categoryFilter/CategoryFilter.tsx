@@ -1,37 +1,35 @@
-import { useState, useMemo } from "react";
+import { useState, useRef } from "react";
 import styles from "./CategoryFilter.module.scss";
-
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { Filter, IGame } from "../../interfaces/videogames.interface";
+import React, { useMemo } from "react";
 
 type Props = {
   games: IGame[];
   onChange: (filter: Filter) => void;
 };
 
-export const CategoryFilter = ({ games, onChange }: Props) => {
+const CategoryFilter = ({ games, onChange }: Props) => {
   const [active, setActive] = useState(false);
+  const [selectedGenres, _setSelectedGenres] = useState<Set<string>>(new Set());
+
+  const ref = useRef(new Set());
 
   const menuToggler = () => setActive((prev) => !prev);
-  /* */
-  const [selected, setSelected] = useState<Set<string>>(() => new Set());
 
-  /* */
   function handleChange(genero: string, isChecked: boolean) {
-    const draft = structuredClone(selected);
-
     if (isChecked) {
-      draft.add(genero);
+      selectedGenres.add(genero);
     } else {
-      draft.delete(genero);
+      selectedGenres.delete(genero);
     }
 
-    onChange(draft.size ? (game) => draft.has(game.toString()) : null);
-    setSelected(draft);
+    onChange(
+      selectedGenres.size ? (game) => selectedGenres.has(game.toString()) : null
+    );
   }
 
-  /* */
   const generos = useMemo(() => {
     const buffer: Set<string> = new Set();
 
@@ -44,7 +42,7 @@ export const CategoryFilter = ({ games, onChange }: Props) => {
     return Array.from(buffer);
   }, [games]);
 
-  console.log(selected);
+  console.log(ref.current);
 
   return (
     <div className={styles.containerfilter}>
@@ -64,6 +62,7 @@ export const CategoryFilter = ({ games, onChange }: Props) => {
                   type="checkbox"
                   name={genero}
                   value={genero}
+                  checked={selectedGenres.has(genero)}
                   onChange={(e) => handleChange(genero, e.target.checked)}
                 />
                 <label htmlFor={genero}>{genero}</label>
@@ -75,3 +74,5 @@ export const CategoryFilter = ({ games, onChange }: Props) => {
     </div>
   );
 };
+
+export default React.memo(CategoryFilter);
