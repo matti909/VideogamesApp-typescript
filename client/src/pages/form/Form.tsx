@@ -110,7 +110,7 @@ export const Form = () => {
 
   const navigate = useNavigate();
 
-  const [value1, setValue1] = useState<SelectOptions[]>([options[0]]);
+  const [selectGenre, setSelectGenre] = useState<SelectOptions[]>([options[0]]);
 
   const notify = () => {
     toast.success("successful!", {
@@ -129,7 +129,7 @@ export const Form = () => {
     e.preventDefault();
     const gameWithGenres: Game = {
       ...games,
-      genres: value1.map((genre) => ({ name: genre.name })),
+      genres: selectGenre.map((genre) => ({ name: genre.name })),
     };
     console.log(gameWithGenres);
     const res = await gameRequest(gameWithGenres);
@@ -145,7 +145,7 @@ export const Form = () => {
     <div className={style.container}>
       <form onSubmit={handleSubmit} className={style.container__form}>
         <div>
-          <label htmlFor="name">Your name: </label>
+          <label htmlFor="name">Nombre: </label>
           <input
             className={style.pimpum}
             required
@@ -161,7 +161,6 @@ export const Form = () => {
           <label htmlFor="background_image">Imagen de fondo: </label>
           <input
             className={style.pimpum}
-            required
             type="text"
             id="background_image"
             placeholder="Ingresa la URL de la imagen"
@@ -181,7 +180,7 @@ export const Form = () => {
             id="rating"
             max={5}
             min={0}
-            step="0.1"
+            step="0.5"
             value={games.rating}
             onChange={(e) =>
               setGame({ ...games, rating: parseFloat(e.target.value) })
@@ -190,7 +189,7 @@ export const Form = () => {
         </div>
 
         <div>
-          <label htmlFor="released">Your released</label>
+          <label htmlFor="released">Lanzamiento</label>
           <input
             className={style.pimpum}
             required
@@ -202,7 +201,7 @@ export const Form = () => {
         </div>
 
         <div>
-          <label htmlFor="description">Your description</label>
+          <label htmlFor="description">Descripción</label>
           <textarea
             className={style.area}
             rows={3}
@@ -212,32 +211,50 @@ export const Form = () => {
             onChange={(e) => setGame({ ...games, description: e.target.value })}
           />
         </div>
-        <div style={{ width: "10em" }}></div>
-        <Select
-          multiple
-          options={options}
-          value={value1}
-          onChange={(o) => setValue1(o)}
-        />
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setGame(() => {
-              return {
-                ...games,
-                genres: games.genres.concat(value1),
-              };
-            });
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
           }}
         >
-          <b>add step</b>
-        </button>
-
-        <div>
-          <button onClick={notify} type="submit">
-            Submit
-          </button>
+          <div style={{ display: "flex" }}>
+            <Select
+              multiple
+              options={options}
+              value={selectGenre}
+              onChange={(o) => setSelectGenre(o)}
+            />
+            <button
+              style={{ marginLeft: "6px" }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setGame(() => {
+                  return {
+                    ...games,
+                    genres: games.genres.concat(selectGenre),
+                  };
+                });
+              }}
+            >
+              <b>add step</b>
+            </button>
+          </div>
+          <div>
+            <button
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                fontSize: "20px",
+                marginTop: "10px",
+                cursor: "pointer",
+              }}
+              onClick={notify}
+              type="submit"
+            >
+              Crear!
+            </button>
+          </div>
         </div>
       </form>
     </div>
