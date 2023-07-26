@@ -1,16 +1,26 @@
+@import "./../../styles/index.scss";
+
 .inputt {
-  display: flex;
-  margin: 1rem;
-  height: 40px;
-  border-radius: 10em;
+  display: none;
+
+  @include min-width(medium) {
+    display: flex;
+    margin: 1rem;
+    height: 40px;
+    border-radius: 10em;
+  }
 
   &__button {
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-    border: none;
-    font-weight: bold;
-    font-size: medium;
+    display: none;
+    @include min-width(medium) {
+      display: flex;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+      font-size: medium;
+    }
   }
 
   &__in {

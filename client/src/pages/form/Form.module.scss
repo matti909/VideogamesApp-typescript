@@ -20,13 +20,13 @@
 }
 
 .pimpum {
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin: 10px 0 0px 0;
+  padding-top: 4px;
   background-color: #afaeae;
   height: 20px;
   border-radius: 5px;
-  margin: 10px 0 20px 0;
   padding: 20px;
   box-sizing: border-box;
   color: #000;

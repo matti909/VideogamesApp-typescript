@@ -1,4 +1,5 @@
 @import "./../../styles/index.scss";
+
 .header {
   margin-left: 26px;
   height: $header-height;
@@ -36,17 +37,24 @@
     }
   }
 
-  .desktop__button__container {
+  &__search {
     display: none;
+    @include min-width(medium) {
+      display: none;
+    }
+  }
+
+  .desktop__button__container {
+    display: initial;
     @include min-width(medium) {
       display: initial;
     }
   }
 
   .mobile__button__container {
-    display: initial;
+    display: none;
     @include min-width(medium) {
-      display: none;
+      display: initial;
     }
   }
 

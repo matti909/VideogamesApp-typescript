@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styles from "./CardConteiner.module.scss";
 import { IGame } from "../../interfaces/videogames.interface";
 import { useAppState } from "../../context/useAppState";
 import { Link } from "react-router-dom";
 
-export const CardConteiner: React.FC<IGame> = (game) => {
+export const CardConteiner: React.FC<IGame> = React.memo((game) => {
   const { actions, state } = useAppState();
   const { toggleFavorites } = actions;
   const { favorites } = state;
 
   const isFavorites = favorites.some((favorite) => favorite.id === game.id);
+
+  const handleToggleFavorites = useCallback(() => {
+    toggleFavorites(game);
+  }, [toggleFavorites, game]);
 
   return (
     <div className={styles.cardContainer}>
@@ -21,7 +25,7 @@ export const CardConteiner: React.FC<IGame> = (game) => {
           loading="lazy"
         />
         <button
-          onClick={() => toggleFavorites(game)}
+          onClick={handleToggleFavorites}
           className={`${isFavorites ? styles.favoriteButton : ""}`}
           style={{
             position: "absolute",
@@ -62,4 +66,4 @@ export const CardConteiner: React.FC<IGame> = (game) => {
       </Link>
     </div>
   );
-};
+});

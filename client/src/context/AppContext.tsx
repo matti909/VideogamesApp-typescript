@@ -40,9 +40,8 @@ export const AppStateProvider = ({ children }: Props) => {
     setitemsPerPage(itemsPerPage + 5);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleMoreClick = (event: any) => {
-    setcurrentPage(Number(event.target.id));
+  const handleMoreClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setcurrentPage(Number(event.currentTarget.id));
   };
 
   const handleNextbtn = () => {

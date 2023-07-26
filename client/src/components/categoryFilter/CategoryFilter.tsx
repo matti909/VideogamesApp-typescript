@@ -1,9 +1,8 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import styles from "./CategoryFilter.module.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { Filter, IGame } from "../../interfaces/videogames.interface";
-import React, { useMemo } from "react";
 
 type Props = {
   games: IGame[];
