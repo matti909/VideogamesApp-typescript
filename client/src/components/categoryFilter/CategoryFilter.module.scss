@@ -1,7 +1,7 @@
 @import "./../../styles/index.scss";
 
 .containerfilter {
-  display: flex;
+  display: none;
   position: absolute;
   top: 75px;
   left: 39px;
@@ -46,7 +46,8 @@
 
     & > svg {
       display: initial;
-      font-size: 32px;
+      margin-top: 8px;
+      font-size: 40px;
 
       &:hover {
         transform: scale(0.98);
@@ -61,7 +62,7 @@
 
     span {
       position: absolute;
-      top: 1em;
+      top: 1rem;
     }
 
     .type-options {
@@ -72,6 +73,9 @@
         background-color: rgb(212, 210, 210);
         padding: 0 $spacing-lg;
         margin-top: $spacing-md;
+        padding: 10px;
+        border: 2.4px solid #667;
+        border-radius: 10px;
       }
 
       .group-type {

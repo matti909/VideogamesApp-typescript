@@ -13,8 +13,7 @@ export const Pagination = ({ matches }: Props) => {
   const { currentPage, itemsPerPage, maxPageNumberLimit, minPageNumberLimit } =
     state;
 
-  const { handleMoreClick, handleLoadMore, handleNextbtn, handlePrevbtn } =
-    actions;
+  const { handleMoreClick, handleNextbtn, handlePrevbtn } = actions;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -65,35 +64,32 @@ export const Pagination = ({ matches }: Props) => {
         marginRight: "35px",
       }}
     >
+      <ul className={styles.pageNumbers}>
+        <li>
+          <button
+            onClick={handlePrevbtn}
+            disabled={currentPage === pages[0] ? true : false}
+          >
+            Prev
+          </button>
+        </li>
+
+        {pageDecrementBtn}
+        {renderPageNumbers}
+        {pageIncrementBtn}
+
+        <li>
+          <button
+            onClick={handleNextbtn}
+            disabled={currentPage === pages[pages.length - 1] ? true : false}
+          >
+            Next
+          </button>
+        </li>
+      </ul>
       <section style={{ flex: 1 }}>
         <ListOfGame games={currentItems} />
-        <button onClick={handleLoadMore}>Load More</button>
       </section>
-      <footer className={styles.footerin}>
-        <ul className={styles.pageNumbers}>
-          <li>
-            <button
-              onClick={handlePrevbtn}
-              disabled={currentPage === pages[0] ? true : false}
-            >
-              Prev
-            </button>
-          </li>
-
-          {pageDecrementBtn}
-          {renderPageNumbers}
-          {pageIncrementBtn}
-
-          <li>
-            <button
-              onClick={handleNextbtn}
-              disabled={currentPage === pages[pages.length - 1] ? true : false}
-            >
-              Next
-            </button>
-          </li>
-        </ul>
-      </footer>
     </div>
   );
 };

@@ -28,13 +28,13 @@ export const Header = () => {
         >
           <ul>
             <li>
-              <Link to="/page-one">INICIO</Link>
+              <Link to="/">INICIO</Link>
             </li>
             <li>
-              <Link to="/page-two">FAVORITOS</Link>
+              <Link to="/favorites">FAVORITOS</Link>
             </li>
             <li>
-              <Link to="/page-three">CREAR</Link>
+              <Link to="/form">CREAR</Link>
             </li>
           </ul>
         </nav>
