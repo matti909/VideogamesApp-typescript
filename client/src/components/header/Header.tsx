@@ -1,50 +1,52 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import styles from "./Header.module.scss";
-import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
+import { BiMenuAltRight } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { SearchBar } from "../searchBar/SearchBar";
+import styles from "./Header.module.scss";
+import React from "react";
 
 export const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuToggler = () => setMenuOpen((prev) => !prev);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
+  const menuToggleHandler = () => {
+    setMenuOpen((p) => !p);
+  };
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.header__content}>
-        <div>
-          <span className={styles.logo}>GAME___PLAY</span>
-        </div>
+        <Link to="/" className={styles.header__content__logo}>
+          GAME__PLAY
+        </Link>
 
-        <div>
-          <SearchBar />
-        </div>
+        <SearchBar />
 
-        <div>
-          <div className={styles.desktop__button__container}>
-            <nav
-              className={`${styles.nav} ${menuOpen ? styles["nav--open"] : ""}`}
-            >
-              <Link
-                style={{ padding: "8px" }}
-                className={styles.nav__item}
-                to="/"
-              >
-                INICIO
-              </Link>
-              <Link className={styles.nav__item} to="/favorites">
-                FAVORITOS
-              </Link>
-              <Link className={styles.nav__item} to="/form">
-                CREAR
-              </Link>
-            </nav>
-          </div>
-          <button className={styles.header__toggler} onClick={menuToggler}>
-            {!menuOpen ? <BiMenuAltRight /> : <AiOutlineCloseSquare />}
-          </button>
+        <nav
+          className={`${styles.header__content__nav} ${
+            menuOpen ? styles.isMenu : ""
+          }`}
+        >
+          <ul>
+            <li>
+              <Link to="/page-one">INICIO</Link>
+            </li>
+            <li>
+              <Link to="/page-two">FAVORITOS</Link>
+            </li>
+            <li>
+              <Link to="/page-three">CREAR</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div className={styles.header__content__toggle}>
+          {menuOpen ? (
+            <AiOutlineCloseSquare onClick={menuToggleHandler} />
+          ) : (
+            <BiMenuAltRight onClick={menuToggleHandler} />
+          )}
         </div>
       </div>
-    </div>
+    </header>
   );
 };

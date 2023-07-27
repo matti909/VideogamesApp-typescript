@@ -35,9 +35,8 @@ export const SearchBar = () => {
           <div className={styles.inputt__iconContainer}>
             <IoSearch className={styles.inputt__icon} />
           </div>
+          <button className={styles.inputt__button}>Buscar</button>
         </div>
-
-        <button className={styles.inputt__button}>Buscar</button>
       </form>
     </div>
   );

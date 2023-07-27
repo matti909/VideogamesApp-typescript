@@ -2,7 +2,7 @@
 
 .footerin {
   display: none;
-  @include min-width(small) {
+  @include breakpoint(md) {
     display: initial;
   }
 }

@@ -9,7 +9,7 @@
   text-align: center;
   padding: $spacing-md 0;
 
-  @include min-width(medium) {
+  @include breakpoint(md) {
     padding: 0 $spacing-lg;
     align-items: center;
     justify-content: center;
@@ -37,7 +37,7 @@
     align-items: center;
     cursor: pointer;
 
-    @include min-width(medium) {
+    @include breakpoint(md) {
       display: block;
       background-color: transparent;
       color: rgb(250, 247, 247);
@@ -66,7 +66,7 @@
 
     .type-options {
       display: none;
-      @include min-width(medium) {
+      @include breakpoint(md) {
         display: block;
         color: black;
         background-color: rgb(212, 210, 210);
@@ -95,7 +95,7 @@
     }
   }
 
-  @include min-width(medium) {
+  @include breakpoint(md) {
     padding: 0;
     display: flex;
     align-items: center;
