@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Games } from '../entities/games.entity';
-import { AppDS } from '../ormconfig';
+import { AppDS } from '../config/ormconfig';
 import type { IGame, IGenre, IPlatform } from '../interfaces/game.interface';
 import { Genre } from '../entities/genre.entity';
 

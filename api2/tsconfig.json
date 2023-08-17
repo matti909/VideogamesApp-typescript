@@ -11,7 +11,7 @@
         "./src/routes/*"
       ],
       "@interfaces/*": [
-        "./src/interfaces/*"
+        "./src/interfaces"
       ],
       "@controllers/*": [
         "./src/controllers/*"
@@ -20,13 +20,13 @@
         "./src/config/*"
       ],
       "@entities/*": [
-        "./src/entities/*"
+        "./src/entities"
       ],
-      "@services/*": [
-        "./src/services/*"
+      "@services": [
+        "./src/services"
       ],
-      "@utils/*": [
-        "./src/utils/*"
+      "@utils": [
+        "./src/utils"
       ]
     },
     "typeRoots": [
@@ -39,10 +39,12 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/config/ormconfig",
+    "src/config/base.entity.ts"
   ],
   "exclude": [
     "node_modules"
