@@ -7,8 +7,6 @@ import { Genre } from '../entities/genre.entity';
 require('dotenv').config();
 const DOGS_API_KEY = 'd64cc61c647b428dafe6d53ec066bc62';
 
-const postRepository = AppDS.getRepository(Games);
-
 const getVideogames = async (): Promise<IGame[]> => {
   const apiGames: IGame[] = [];
 
