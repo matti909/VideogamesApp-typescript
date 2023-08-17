@@ -4,7 +4,7 @@ import { app } from './app';
 import { AppDS } from './config/ormconfig';
 
 require('dotenv').config();
-const PORT = 4002;
+const PORT = process.env.PORT ?? 4002;
 
 async function boostrap() {
   try {
@@ -15,7 +15,7 @@ async function boostrap() {
       console.log('Server running OK!!');
     });
 
-    console.log('Server is listening on port:', PORT);
+    console.log('Server is listening on port: ', PORT);
   } catch (err) {
     console.log(err);
   }
