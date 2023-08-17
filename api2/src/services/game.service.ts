@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Games } from '../entities/games.entity';
 import { AppDS } from '../config/ormconfig';
 import type { IGame, IGenre, IPlatform } from '../interfaces/game.interface';
-import { Genre } from 'src/entities/genre.entity';
+import { Genre } from '../entities/genre.entity';
 
 require('dotenv').config();
 const DOGS_API_KEY = 'd64cc61c647b428dafe6d53ec066bc62';

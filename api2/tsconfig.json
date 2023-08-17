@@ -4,7 +4,7 @@
     "module": "commonjs",
     "rootDir": "./src",
     "allowJs": true,
-    "outDir": "dist",
+    "outDir": "build",
     "baseUrl": ".",
     "paths": {
       "@routes/*": [

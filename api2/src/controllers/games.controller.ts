@@ -3,7 +3,7 @@ import {
   createNewGame,
   getApiInfoById,
   getVideogames
-} from './../services/game.service';
+} from '../services/game.service';
 import { handleHttp } from './../utils/error.handle';
 
 const getGame = async (req: Request, res: Response) => {
