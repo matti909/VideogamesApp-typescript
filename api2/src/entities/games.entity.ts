@@ -8,10 +8,9 @@ import {
 import { IGame } from '../../src/interfaces/game.interface';
 import { Platform } from './../entities/platform.entity';
 import { Genre } from './../entities/genre.entity';
-import { BaseEntity } from './base.entity';
 
 @Entity({ name: 'games' })
-export class Games extends BaseEntity implements IGame {
+export class Games implements IGame {
   @PrimaryGeneratedColumn()
   id: number;
 

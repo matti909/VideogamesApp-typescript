@@ -12,7 +12,7 @@ import { Games } from './../entities/games.entity';
 import { BaseEntity } from './base.entity';
 
 @Entity({ name: 'platforms' })
-export class Platform extends BaseEntity implements IPlatform {
+export class Platform implements IPlatform {
   @PrimaryGeneratedColumn()
   id: number;
 
