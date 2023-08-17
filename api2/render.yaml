@@ -1,5 +1,5 @@
 services:
-  - name: my-node-app
+  - name: api2
     type: web
-    buildCommand: npm run build
-    startCommand: npm start
+    buildCommand: cd /opt/render/project && npm run build
+    startCommand: cd /opt/render/project && npm start
