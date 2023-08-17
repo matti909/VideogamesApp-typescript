@@ -8,7 +8,7 @@ import {
 import { Games } from './../entities/games.entity';
 
 import { IGenre } from '../interfaces/game.interface';
-import { BaseEntity } from './../config/base.entity';
+import { BaseEntity } from './base.entity';
 
 @Entity({ name: 'genres' })
 export class Genre extends BaseEntity implements IGenre {

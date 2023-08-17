@@ -9,7 +9,7 @@ import {
 import { IPlatform } from '../interfaces/game.interface';
 
 import { Games } from './../entities/games.entity';
-import { BaseEntity } from './../config/base.entity';
+import { BaseEntity } from './base.entity';
 
 @Entity({ name: 'platforms' })
 export class Platform extends BaseEntity implements IPlatform {
