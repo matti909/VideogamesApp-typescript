@@ -1,0 +1,5 @@
+services:
+  - name: api2
+    type: web
+    buildCommand: yarn install
+    startCommand: yarn start
