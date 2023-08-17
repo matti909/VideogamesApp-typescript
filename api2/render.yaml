@@ -1,5 +1,0 @@
-services:
-  - name: api2
-    type: web
-    buildCommand: cd /opt/render/project && npm run build
-    startCommand: cd /opt/render/project && npm start
