@@ -1,10 +1,9 @@
+import { BASEURL } from "../../service/makeReq";
 import { Game } from "./Form";
-
-const API = "http://localhost:4002";
 
 export const gameRequest = async (game: Game) => {
   try {
-    const response = await fetch(`${API}/games`, {
+    const response = await fetch(`${BASEURL}/games`, {
       method: "POST",
       body: JSON.stringify(game),
       headers: {

@@ -49,7 +49,7 @@ const options = [
   },
   {
     id: 83,
-    name: "plater",
+    name: "platformer",
   },
   {
     id: 59,
@@ -99,8 +99,6 @@ export type Game = {
 };
 
 export const Form = () => {
-  const navigate = useNavigate();
-
   const [games, setGame] = useState<Game>({
     name: "",
     background_image: "",
@@ -110,10 +108,12 @@ export const Form = () => {
     genres: [],
   });
 
+  const navigate = useNavigate();
+
   const [selectGenre, setSelectGenre] = useState<SelectOptions[]>([options[0]]);
 
   const notify = () => {
-    toast.success("inprogress!", {
+    toast.success("successful!", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -121,17 +121,20 @@ export const Form = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "colored",
+      theme: "dark",
     });
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const gameFormat: Game = {
+    const gameWithGenres: Game = {
       ...games,
-      genres: selectGenre.map((genre) => ({ name: genre.name })),
+      genres: games.genres.map(
+        (genreName) => ({ name: genreName } as unknown as Genre)
+      ),
     };
-    const res = await gameRequest(gameFormat);
+
+    const res = await gameRequest(gameWithGenres);
 
     if (res.status === "success") {
       navigate("/");
@@ -139,48 +142,10 @@ export const Form = () => {
     }
   };
 
-  const [error, setError] = useState<{ name?: string }>({});
-
-  const validate = (games: Game) => {
-    let errors: any = {};
-    if (!games.name) {
-      errors.name = "Ingresar un Nombre";
-    } else if (games.name.length < 4) {
-      errors.name = "Al menos 4 caracteres";
-    }
-    if (!games.description) {
-      errors.description = "Ingresar Descripcion";
-    } else if (games.description.length < 8) {
-      errors.description = "La Descripcion debe tener al menos 8 caracteres";
-    }
-    if (!games.rating) {
-      errors.rating = "Ingresar puntuación";
-    } else if (!/^[1-5]$/.test(games.rating.toString())) {
-      errors.rating = "Rating must be between 1 and 5";
-    }
-    return errors;
-  };
-
-  let handleBlur = () => {
-    let objError = validate(games);
-    if (typeof objError === "object" && objError !== null) {
-      setError(objError);
-    } else {
-      setError({});
-    }
-  };
-
   return (
     <div className={style.container}>
       <form onSubmit={handleSubmit} className={style.container__form}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-            paddingBlock: "14px",
-          }}
-        >
+        <div>
           <label htmlFor="name">Nombre: </label>
           <input
             className={style.pimpum}
@@ -189,17 +154,10 @@ export const Form = () => {
             id="name"
             placeholder="ingresa un nombre"
             value={games.name}
-            onBlur={handleBlur}
             onChange={(e) => setGame({ ...games, name: e.target.value })}
           />
-          <span
-            style={{
-              visibility: error.name ? "visible" : "hidden",
-            }}
-          >
-            {error.name}
-          </span>
         </div>
+
         <div>
           <label htmlFor="background_image">Imagen de fondo: </label>
           <input
@@ -225,7 +183,6 @@ export const Form = () => {
             min={0}
             step="0.5"
             value={games.rating}
-            onBlur={handleBlur}
             onChange={(e) =>
               setGame({ ...games, rating: parseFloat(e.target.value) })
             }
@@ -252,7 +209,6 @@ export const Form = () => {
             id="description"
             name="description"
             value={games.description}
-            onBlur={handleBlur}
             onChange={(e) => setGame({ ...games, description: e.target.value })}
           />
         </div>

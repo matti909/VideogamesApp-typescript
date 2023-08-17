@@ -90,8 +90,6 @@ export const AppStateProvider = ({ children }: Props) => {
 
   const [favorites, setFavorites] = useState<IGame[]>([]);
 
-  console.log(favorites);
-
   function toggleFavorites(game: IGame) {
     const isFavorite = favorites.some((favorite) => favorite.id === game.id);
     if (isFavorite) {
