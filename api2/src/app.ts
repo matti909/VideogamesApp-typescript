@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compress from 'compression';
 import helmet from 'helmet';
-import { router } from './routes';
+import { router } from './../src/routes/';
 
 require('dotenv').config();
 
