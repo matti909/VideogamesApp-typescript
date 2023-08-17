@@ -8,4 +8,4 @@ const router = Router();
 router.use('/games', gamesRouter);
 router.use('/genres', genresRouter);
 
-export { router };
+export default router;

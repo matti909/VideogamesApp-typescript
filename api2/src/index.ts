@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 import { AppDS } from './ormconfig';
-import { app } from './app';
+import app from './app';
 
 require('dotenv').config();
 const PORT = process.env.PORT;

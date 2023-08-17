@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compress from 'compression';
 import helmet from 'helmet';
-import { router } from '../src/routes/';
+import router from '../src/routes/';
 
 require('dotenv').config();
 
@@ -24,4 +24,4 @@ app.use(cors());
 
 app.use('/', router);
 
-export { app };
+export default app;
