@@ -4,7 +4,7 @@ import { app } from './app';
 import { AppDS } from './config/ormconfig';
 
 require('dotenv').config();
-const PORT = process.env.PORT ?? 4002;
+const PORT = process.env.PORT;
 
 async function boostrap() {
   try {
