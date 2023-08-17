@@ -1,5 +1,6 @@
-import { AppDS } from '@config/ormconfig';
 import 'reflect-metadata';
+
+import { AppDS } from './config/ormconfig';
 import { app } from './app';
 
 require('dotenv').config();
