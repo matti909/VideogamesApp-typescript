@@ -6,7 +6,7 @@ export interface IGame {
   released: string;
   background_image: string;
   rating: number;
-  platforms: IPlatform2[] | IPlatform[];
+  platforms?: IPlatform2[] | IPlatform[];
   genres: string[] | IGenre[];
 }
 
