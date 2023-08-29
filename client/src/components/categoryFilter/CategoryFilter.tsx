@@ -1,5 +1,5 @@
 import React, { useState, useRef, useMemo } from "react";
-import styles from "./CategoryFilter.module.scss";
+import style from "./CategoryFilter.module.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { Filter, IGame } from "../../interfaces/videogames.interface";
@@ -44,19 +44,19 @@ const CategoryFilter = ({ games, onChange }: Props) => {
   console.log(ref.current);
 
   return (
-    <div className={styles.containerfilter}>
-      <div className={styles["filter-by-type"]}>
+    <div className={style.containerfilter}>
+      <div className={style["filter-by-type"]}>
         <button
-          className={styles.containerfilter__toggler}
+          className={style.containerfilter__toggler}
           onClick={menuToggler}
         >
           {!active ? <BiMenuAltRight /> : <AiOutlineCloseSquare />}{" "}
-          <span style={{ fontSize: "12px" }}>Filtros</span>
+          <span className={style.containerfilter__spen}>Filtros</span>
         </button>
         {active && (
-          <div className={styles["type-options"]}>
+          <div className={style["type-options"]}>
             {generos.map((genero) => (
-              <div key={genero} className={styles["group-type"]}>
+              <div key={genero} className={style["group-type"]}>
                 <input
                   type="checkbox"
                   name={genero}

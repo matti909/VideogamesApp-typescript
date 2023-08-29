@@ -109,11 +109,8 @@ dist
 # package-lock.json
 package-lock.json
 
-config/
 
 README.md
-
-Dockerfile
 
 /api/docker-compose.yml
 

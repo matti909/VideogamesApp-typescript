@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { videogames } from "../../service/fetchGames";
+import { Loader } from "../../components/loader/Loader";
 import { IGame } from "../../interfaces/videogames.interface";
+import { videogames } from "../../service/fetchGames";
 import style from "./Detail.module.scss";
-import { Loader } from "../../components/mkdir/Loader";
 
 export const Detail = () => {
   const { id } = useParams<{ id: string }>();
@@ -32,12 +32,14 @@ export const Detail = () => {
     game?.rating !== undefined ? "★".repeat(game.rating).padEnd(5, "☆") : "";
 
   return (
-    <main style={{ paddingTop: "100px" }} className={style.detailContainer}>
+    <main>
       {loading ? (
-        <Loader />
+        <div className={style.loading}>
+          <Loader />
+        </div>
       ) : (
-        <>
-          <section>
+        <section className={style.detailContainer}>
+          <article>
             <picture className={style.detailSection}>
               <img
                 className={style.detailImage}
@@ -48,9 +50,9 @@ export const Detail = () => {
                 <p>Released:</p> {game?.released}
               </span>
             </picture>
-          </section>
+          </article>
 
-          <section>
+          <article>
             <div className={style.detailSection}>
               <h1 className={style.detailSection__name}>{game?.name}</h1>
               <p className={style.detailSection__des}> {game?.description}</p>
@@ -59,8 +61,8 @@ export const Detail = () => {
                 Rating: <span className={style.ratingStars}>{ratingStars}</span>
               </p>
             </div>
-          </section>
-        </>
+          </article>
+        </section>
       )}
     </main>
   );

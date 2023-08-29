@@ -15,12 +15,16 @@ $spacing-lg: 32px;
 $borderRadius: 12px;
 
 // header height
-$header-height: 65px;
+$header-height: 65zpx;
+
+$sm: 600px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1200px;
 
 @mixin breakpoint($point) {
   @if $point == md {
-    // 768px
-    @media (min-width: 48em) {
+    @media (min-width: $md) {
       @content;
     }
   }

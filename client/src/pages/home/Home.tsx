@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import CategoryFilter from "../../components/categoryFilter/CategoryFilter";
+import { Loader } from "../../components/loader/Loader";
 import { Pagination } from "../../components/paginado/Pagination";
 import { useAppState } from "../../context/useAppState";
 import { Filter } from "../../interfaces/videogames.interface";
-import { Loader } from "../../components/mkdir/Loader";
 import style from "./Home.module.scss";
 
 export const Home = () => {
@@ -42,7 +42,8 @@ export const Home = () => {
   return (
     <>
       <ToastContainer />
-      <aside style={{ minWidth: "6em" }}>
+
+      <aside className={style.side}>
         <CategoryFilter
           games={allVideogames}
           onChange={(filter: Filter) =>
@@ -57,7 +58,7 @@ export const Home = () => {
             <Loader />
           </div>
         ) : (
-          <section style={{ flex: "1" }}>
+          <section className={style.sec}>
             <Pagination matches={matches} />
           </section>
         )}

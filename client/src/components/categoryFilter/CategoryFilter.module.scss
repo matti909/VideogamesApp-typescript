@@ -10,11 +10,15 @@
   padding: $spacing-md 0;
 
   @include breakpoint(md) {
-    padding: 0 $spacing-lg;
+    padding: 0 $spac ing-lg;
     align-items: center;
     justify-content: center;
     border-radius: 100px;
     left: 39px;
+
+    &__spen {
+      font-size: 12px;
+    }
 
     &__content {
       padding: 0;
