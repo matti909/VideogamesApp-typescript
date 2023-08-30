@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import style from "./CategoryFilter.module.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
