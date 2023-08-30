@@ -38,11 +38,11 @@ export const Detail = () => {
           <Loader />
         </div>
       ) : (
-        <section className={style.detailContainer}>
+        <section className={style.detail}>
           <article>
-            <picture className={style.detailSection}>
+            <picture className={style.detail__section}>
               <img
-                className={style.detailImage}
+                className={style.detail__image}
                 src={game?.background_image}
                 alt="null"
               />
@@ -53,9 +53,9 @@ export const Detail = () => {
           </article>
 
           <article>
-            <div className={style.detailSection}>
-              <h1 className={style.detailSection__name}>{game?.name}</h1>
-              <p className={style.detailSection__des}> {game?.description}</p>
+            <div className={style.detail__body}>
+              <h1 className={style.detail__name}>{game?.name}</h1>
+              <p className={style.detail__des}> {game?.description}</p>
               <br />
               <p style={{ fontSize: "30px" }}>
                 Rating: <span className={style.ratingStars}>{ratingStars}</span>

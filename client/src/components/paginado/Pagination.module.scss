@@ -1,5 +1,16 @@
 @import "./../../styles/index.scss";
 
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-right: 35px;
+
+  @include breakpoint(md) {
+    display: grid;
+  }
+}
+
 .footerin {
   display: none;
   @include breakpoint(md) {
@@ -10,9 +21,8 @@
 .pageNumbers {
   list-style: none;
   display: flex;
-  flex: 1;
-  justify-content: end;
-  align-items: center;
+  justify-content: center;
+  align-items: stretch;
 
   & > li {
     padding: 10px;

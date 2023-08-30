@@ -1,26 +1,33 @@
 @import "./../../styles/index.scss";
 
-.detailContainer {
+.detail {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: start;
-  justify-content: center;
-  text-align: left;
-  margin: 20px;
+  flex-direction: column;
+  padding: 10px;
 
-  @include breakpoint(md) {
-    /* Estilos específicos para pantallas medianas (tabletas) y más grandes */
-    display: grid;
-    gap: 1rem;
-    padding: 20px;
+  &__image {
+    width: 380px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
   }
 
-  .detailImage {
-    width: 420px;
-    height: 400px;
-    object-fit: cover;
+  @include breakpoint(md) {
     display: flex;
-    border-radius: 10px;
+    flex-direction: row-reverse;
+  }
+
+  &__body {
+    margin: 20px;
+
+    &__name {
+      color: rgba(14, 175, 27, 0.8);
+      margin-bottom: 20px;
+    }
+
+    &__des {
+      overflow-y: scroll;
+    }
   }
 }
 
@@ -29,19 +36,6 @@
   justify-content: center;
   align-items: center;
   margin: 200px 220px;
-}
-
-.detailSection {
-  margin: 20px;
-
-  &__name {
-    color: rgba(14, 175, 27, 0.8);
-    margin-bottom: 20px;
-  }
-
-  &__des {
-    overflow-y: scroll;
-  }
 }
 
 .ratingStars {

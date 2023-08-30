@@ -16,10 +16,6 @@
     border-radius: 100px;
     left: 39px;
 
-    &__spen {
-      font-size: 12px;
-    }
-
     &__content {
       padding: 0;
       transition: padding 1.8s ease, transform 1.5s ease;
@@ -45,11 +41,11 @@
       display: block;
       background-color: transparent;
       color: rgb(250, 247, 247);
+      border: none;
 
       &__spen {
         font-size: 12px;
       }
-      border: none;
     }
 
     & > svg {
@@ -78,10 +74,7 @@
       @include breakpoint(md) {
         display: block;
         color: black;
-        background- &__spen {
-          font-size: 12px;
-        }
-        color: rgb(212, 210, 210);
+        background-color: rgba(212, 210, 210, 0.78);
         padding: 0 $spacing-lg;
         margin-top: $spacing-md;
         padding: 10px;
@@ -94,7 +87,8 @@
         margin-bottom: $spacing-sm;
         display: flex;
         align-items: center;
-
+        font-size: large;
+        font-weight: bold;
         input[type="checkbox"] {
           margin-right: 6px;
         }
@@ -110,9 +104,6 @@
     }
   }
 
-  &__spen {
-    font-size: 12px;
-  }
   @include breakpoint(md) {
     padding: 0;
     display: flex;

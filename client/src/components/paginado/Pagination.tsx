@@ -1,7 +1,7 @@
 import { useAppState } from "../../context/useAppState";
 import { IGame } from "../../interfaces/videogames.interface";
 import { ListOfGame } from "../listOfGame/ListOfGame";
-import styles from "./Pagination.module.scss";
+import style from "./Pagination.module.scss";
 
 interface Props {
   matches: IGame[];
@@ -35,7 +35,7 @@ export const Pagination = ({ matches }: Props) => {
           id={number.toString()}
           onClick={handleMoreClick}
           //className={`${currentPage === number ? [styles.active].join('') : null}`}
-          className={`${currentPage === number ? styles.active : null}`}
+          className={`${currentPage === number ? style.active : null}`}
         >
           {number}
         </li>
@@ -56,15 +56,8 @@ export const Pagination = ({ matches }: Props) => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: "10px",
-        marginRight: "35px",
-      }}
-    >
-      <ul className={styles.pageNumbers}>
+    <main className={style.container}>
+      <ul className={style.pageNumbers}>
         <li>
           <button
             onClick={handlePrevbtn}
@@ -90,6 +83,6 @@ export const Pagination = ({ matches }: Props) => {
       <section style={{ flex: 1 }}>
         <ListOfGame games={currentItems} />
       </section>
-    </div>
+    </main>
   );
 };
