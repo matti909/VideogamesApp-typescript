@@ -6,28 +6,28 @@
   padding: 10px;
 
   &__image {
-    width: 380px;
+    max-width: 360px;
     height: 300px;
     object-fit: cover;
     border-radius: 10px;
   }
 
-  @include breakpoint(md) {
-    display: flex;
-    flex-direction: row-reverse;
+  &__name {
+    color: rgba(14, 175, 27, 0.8);
+    margin-bottom: 20px;
+  }
+
+  &__des {
+    overflow-y: scroll;
   }
 
   &__body {
     margin: 20px;
+  }
 
-    &__name {
-      color: rgba(14, 175, 27, 0.8);
-      margin-bottom: 20px;
-    }
-
-    &__des {
-      overflow-y: scroll;
-    }
+  @include breakpoint(md) {
+    display: flex;
+    flex-direction: row-reverse;
   }
 }
 
@@ -39,5 +39,6 @@
 }
 
 .ratingStars {
+  font-size: x-large;
   color: #ffb300;
 }

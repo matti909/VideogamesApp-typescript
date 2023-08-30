@@ -59,6 +59,7 @@ export const Home = () => {
           </div>
         ) : (
           <section className={style.sec}>
+            <p>Resultados:{matches.length}</p>
             <Pagination matches={matches} />
           </section>
         )}

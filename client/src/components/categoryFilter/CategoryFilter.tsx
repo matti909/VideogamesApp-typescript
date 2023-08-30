@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from "react";
+import React, { useState, useRef, useMemo, useCallback } from "react";
 import style from "./CategoryFilter.module.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
@@ -11,24 +11,9 @@ type Props = {
 
 const CategoryFilter = ({ games, onChange }: Props) => {
   const [active, setActive] = useState(false);
-  const [selectedGenres, _setSelectedGenres] = useState<Set<string>>(new Set());
+  const [selectedGenres, setSelectedGenres] = useState<Set<string>>(new Set());
 
-  const ref = useRef(new Set());
-
-  const menuToggler = () => setActive((prev) => !prev);
-
-  function handleChange(genero: string, isChecked: boolean) {
-    if (isChecked) {
-      selectedGenres.add(genero);
-    } else {
-      selectedGenres.delete(genero);
-    }
-
-    onChange(
-      selectedGenres.size ? (game) => selectedGenres.has(game.toString()) : null
-    );
-  }
-
+  // Generación de la lista de géneros únicos utilizando un bucle
   const generos = useMemo(() => {
     const buffer: Set<string> = new Set();
 
@@ -41,7 +26,30 @@ const CategoryFilter = ({ games, onChange }: Props) => {
     return Array.from(buffer);
   }, [games]);
 
-  console.log(ref.current);
+  // Manejo de cambios en la selección de géneros
+  const handleChange = useCallback(
+    (genero: string, isChecked: boolean) => {
+      const newSelectedGenres = new Set(selectedGenres);
+
+      if (isChecked) {
+        newSelectedGenres.add(genero);
+      } else {
+        newSelectedGenres.delete(genero);
+      }
+
+      setSelectedGenres(newSelectedGenres);
+
+      // Actualización de la función onChange
+      onChange(
+        newSelectedGenres.size
+          ? (game) => newSelectedGenres.has(game.toString())
+          : null
+      );
+    },
+    [selectedGenres, onChange]
+  );
+
+  const menuToggler = () => setActive((prev) => !prev);
 
   return (
     <div className={style.containerfilter}>
@@ -51,7 +59,7 @@ const CategoryFilter = ({ games, onChange }: Props) => {
           onClick={menuToggler}
         >
           {!active ? <BiMenuAltRight /> : <AiOutlineCloseSquare />}{" "}
-          <span className={style.containerfilter__spen}>Filtros</span>
+          <p className={style.containerfilter__spen}>Filtros</p>
         </button>
         {active && (
           <div className={style["type-options"]}>
