@@ -12,6 +12,7 @@ export const Home = () => {
   const { allVideogames } = state;
 
   const [loading, setLoading] = useState(true);
+
   const [filters, setFilter] = useState<Record<string, Filter>>({
     genero: null,
     plataforma: null,
@@ -59,8 +60,8 @@ export const Home = () => {
           </div>
         ) : (
           <section className={style.sec}>
-            <p>Resultados:{matches.length}</p>
             <Pagination matches={matches} />
+            <p>Resultados:{matches.length}</p>
           </section>
         )}
       </main>
