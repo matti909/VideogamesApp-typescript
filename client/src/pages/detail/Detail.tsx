@@ -39,18 +39,16 @@ export const Detail = () => {
         </div>
       ) : (
         <section className={style.detail}>
-          <article>
-            <picture className={style.detail__section}>
-              <img
-                className={style.detail__image}
-                src={game?.background_image}
-                alt="null"
-              />
-              <span>
-                <p>Released:</p> {game?.released}
-              </span>
-            </picture>
-          </article>
+          <picture className={style.detail__section}>
+            <img
+              className={style.detail__image}
+              src={game?.background_image}
+              alt="null"
+            />
+            <span>
+              <p>Released:</p> {game?.released}
+            </span>
+          </picture>
 
           <article>
             <div className={style.detail__body}>

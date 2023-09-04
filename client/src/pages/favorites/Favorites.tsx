@@ -7,11 +7,15 @@ export const Favorites = () => {
   const { favorites } = state;
 
   return (
-    <main className={style.principal}>
+    <main>
       {favorites.length === 0 ? (
-        <p>No hay resultados</p>
+        <div className={style.principal}>
+          <p>No hay resultados</p>
+        </div>
       ) : (
-        <ListOfGame games={favorites} />
+        <div className={style.contai}>
+          <ListOfGame games={favorites} />
+        </div>
       )}
     </main>
   );

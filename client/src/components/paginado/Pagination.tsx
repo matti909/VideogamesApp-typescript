@@ -1,5 +1,6 @@
 import { useAppState } from "../../context/useAppState";
 import { IGame } from "../../interfaces/videogames.interface";
+import { useMediaQuery } from "../../utils/useMediaQuery";
 import { ListOfGame } from "../listOfGame/ListOfGame";
 import style from "./Pagination.module.scss";
 
@@ -9,11 +10,13 @@ interface Props {
 
 export const Pagination = ({ matches }: Props) => {
   const { actions, state } = useAppState();
+  const matche2 = useMediaQuery("(min-width: 1280px)");
 
   const { currentPage, itemsPerPage, maxPageNumberLimit, minPageNumberLimit } =
     state;
 
-  const { handleMoreClick, handleNextbtn, handlePrevbtn } = actions;
+  const { handleMoreClick, handleNextbtn, handlePrevbtn, handleLoadMore } =
+    actions;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -57,32 +60,43 @@ export const Pagination = ({ matches }: Props) => {
 
   return (
     <main className={style.container}>
-      <ul className={style.pageNumbers}>
-        <li>
-          <button
-            onClick={handlePrevbtn}
-            disabled={currentPage === pages[0] ? true : false}
-          >
-            Prev
-          </button>
-        </li>
+      {matche2 && (
+        <ul className={style.pageNumbers}>
+          <li>
+            <button
+              onClick={handlePrevbtn}
+              disabled={currentPage === pages[0] ? true : false}
+            >
+              Prev
+            </button>
+          </li>
 
-        {pageDecrementBtn}
-        {renderPageNumbers}
-        {pageIncrementBtn}
+          {pageDecrementBtn}
+          {renderPageNumbers}
+          {pageIncrementBtn}
 
-        <li>
-          <button
-            onClick={handleNextbtn}
-            disabled={currentPage === pages[pages.length - 1] ? true : false}
-          >
-            Next
-          </button>
-        </li>
-      </ul>
+          <li>
+            <button
+              onClick={handleNextbtn}
+              disabled={currentPage === pages[pages.length - 1] ? true : false}
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      )}
+
       <section style={{ flex: 1 }}>
         <ListOfGame games={currentItems} />
       </section>
+
+      {!matche2 && (
+        <div className={style.este}>
+          <button className={style.boton} onClick={handleLoadMore}>
+            Cargar mas
+          </button>
+        </div>
+      )}
     </main>
   );
 };
