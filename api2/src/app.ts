@@ -9,8 +9,6 @@ import compress from 'compression';
 import helmet from 'helmet';
 import router from './routes';
 
-require('dotenv').config();
-
 const app: Application = express();
 
 app.use(morgan('dev'));
