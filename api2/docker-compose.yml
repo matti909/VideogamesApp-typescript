@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:15.1
+    environment:
+       POSTGRES_USER: ''
+       POSTGRES_PASSWORD: ''
+       POSTGRES_DB: 'videogames'
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    networks:
+      - my_network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    environment:
+      POSTGRES_HOST: 'postgres'
+      POSTGRES_PORT: 5432
+      POSTGRES_ACCOUNT: ''
+      POSTGRES_PASSWORD: ''
+      POSTGRES_DATABASE: ''
+      POSTGRES_SYNCHRONIZE: 'true'
+      POSTGRES_ENTITIES: "src/entities/**/*.ts"
+    ports:
+      - 4002:4002
+    depends_on:
+      - postgres
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
